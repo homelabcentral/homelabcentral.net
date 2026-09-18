@@ -1,0 +1,6 @@
+/* Site-level CSS overrides.
+ *
+ * Hextra loads this file automatically when it exists, after the theme's own
+ * compiled stylesheet, so anything declared here wins on equal specificity.
+ * Left empty on purpose: the theme's defaults are the starting point.
+ */

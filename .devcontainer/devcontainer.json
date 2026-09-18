@@ -1,0 +1,100 @@
+{
+  "name": "Homelab Central - site",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspaces/homelabcentral.net",
+
+  // SSH: git over SSH inside the container needs two separate things, and only
+  // one of them is configuration.
+  //
+  // 1. Signing. VS Code forwards the host ssh-agent automatically - it starts a
+  //    helper in the container, creates a fresh socket there, proxies the agent
+  //    protocol back to the host and sets SSH_AUTH_SOCK. Nothing to declare.
+  //    Private keys stay on the host.
+  //
+  // 2. Choosing WHICH key. A forwarded agent offers every key it holds, in
+  //    agent order, and GitHub accepts the first one that maps to an account,
+  //    then stops. This repo is owned by a different GitHub account than the
+  //    host's default, so the wrong key is the likely outcome without
+  //    IdentityFile + IdentitiesOnly in ~/.ssh/config - which means ssh has to
+  //    be able to READ that file, which needs a mount.
+  //
+  // The mount is declared in docker-compose.yml, NOT here. For compose-based
+  // containers the devcontainers CLI parses a mount string into a Mount object
+  // and re-emits it via convertMountToVolume(), which builds `${source}:
+  // ${target}` and nothing else - the Mount interface has no readonly field, so
+  // the flag is gone before the volume string is built, with no warning. Long
+  // syntax in docker-compose.yml supports read_only: true and keeps it.
+  // No Docker and no act. Nothing in this repo builds or runs containers, and
+  // mounting the host docker socket would be root-equivalent access to the host
+  // daemon for no gain. `act` stays a host-side tool - .actrc configures it, and
+  // `act -ln` needs no daemon to syntax-check pages.yml.
+  "features": {
+    "ghcr.io/devcontainers/features/hugo:1": {
+      "extended": true,
+      "version": "0.166.0"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    },
+    // Present in the base image already; declared so the container's toolchain
+    // is stated rather than inherited.
+    "ghcr.io/devcontainers/features/git:1": {},
+    // GitHub CLI, authenticated as whoever owns the token in GH_TOKEN (see the
+    // environment block in docker-compose.yml). Needed because git over SSH and
+    // the GitHub API authenticate separately: the forwarded agent covers pushes,
+    // but `gh repo create` is a REST call and needs a token of its own.
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mhutchie.git-graph",
+        "esbenp.prettier-vscode",
+        "tamasfe.even-better-toml",
+        "budparr.language-hugo-vscode",
+        "bradlc.vscode-tailwindcss",
+        "austenc.tailwind-docs",
+        "kamikillerto.vscode-colorize",
+        "ecmel.vscode-html-css",
+        "ms-vscode.makefile-tools"
+      ]
+    }
+  },
+  // The node_modules named volume (docker-compose.yml) is created empty and
+  // root-owned, because nothing exists at that path in the image for Docker to
+  // seed ownership from. Claim it for the container user before installing,
+  // otherwise npm fails with EACCES on the first mkdir.
+  //
+  // Nothing else is needed: the theme ships its CSS already compiled, so this
+  // site never runs tailwind or postcss. npm is here for prettier only.
+  "postCreateCommand": "sudo chown -R \"$(id -u):$(id -g)\" node_modules && npm install",
+  // Docker Desktop's VirtioFS periodically serves uid 0 for the *root inode* of
+  // a bind mount - measured in the sibling hextra container at ~11% of reads.
+  // Children are never affected, because they are looked up from their parent,
+  // while the mount root has no parent and is answered from a separate code
+  // path.
+  //
+  // Git checks the ownership of the worktree, which here is the mount root, so
+  // that fraction of git calls abort with "detected dubious ownership".
+  // hugo.yaml sets enableGitInfo, so `hugo server` makes hundreds of git calls
+  // per build and reliably loses that lottery; the Source Control panel goes
+  // blank for the same reason.
+  //
+  // This does not repair the ownership - nothing can, the value is fabricated
+  // per-read and is not stored anywhere - it tells git to stop consulting it.
+  // See docker/for-mac#6298 and #6243, both open.
+  //
+  // postStart, not postCreate: the value is wrong intermittently for the life
+  // of the container, so this has to be in place on every start, not just the
+  // first. Guarded so repeated starts do not append duplicate entries.
+  //
+  // Belt and braces: docker-compose.yml also injects the same setting through
+  // GIT_CONFIG_COUNT/KEY/VALUE, which is what actually prevents the VS Code
+  // Git extension from reporting the repository as unsafe. This command runs
+  // as the window opens and can lose that race; environment cannot.
+  "postStartCommand": "git config --global --get-all safe.directory 2>/dev/null | grep -qxF \"${containerWorkspaceFolder}\" || git config --global --add safe.directory \"${containerWorkspaceFolder}\"",
+  // Hugo serves on 8043 (`make dev`). Nothing runs on 1313 and it is not
+  // forwarded - one site, one port.
+  "forwardPorts": [8043]
+}

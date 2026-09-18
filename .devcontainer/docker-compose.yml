@@ -1,0 +1,107 @@
+# Dev environment for the homelabcentral.net site.
+#
+#   dev  the workspace container the editor attaches to
+#
+# One service, one server. Hugo itself serves on 8043 (`make dev`), so there is
+# no second static file server and no public/ bind mount to keep in sync.
+
+# Compose project name. Without it the project is named after this file's
+# directory, giving containers like `devcontainer-dev-1`.
+name: homelabcentral
+
+services:
+  dev:
+    image: mcr.microsoft.com/devcontainers/go:1
+    # Run the container itself as vscode, not root. The image ships with
+    # USER root so features can install packages at build time, and its
+    # metadata sets `remoteUser: vscode` - but that only covers VS Code Server,
+    # terminals and postCreateCommand, leaving the container process as root.
+    # `containerUser` is ignored for compose-based dev containers, so the user
+    # has to be set here. Build-time steps are unaffected; this is runtime only.
+    user: vscode
+    environment:
+      # GitHub API token for `gh`, taken from HOMELABCENTRAL_GH_TOKEN on the
+      # host and renamed on the way in. The rename is the point: `gh` prefers
+      # GH_TOKEN over its own stored credentials, so exporting GH_TOKEN on the
+      # host would silently re-authenticate every host terminal as this
+      # account. Under a different name the host keyring is untouched and only
+      # the container sees GH_TOKEN.
+      #
+      # This matters more than usual here: the host `gh` is authenticated as a
+      # different GitHub account than the one that owns this repo.
+      #
+      # Populate it from the macOS Keychain in ~/.zshrc:
+      #
+      #   export HOMELABCENTRAL_GH_TOKEN="$(security find-generic-password \
+      #     -a homelabcentral -s gh-token-homelabcentral -w 2>/dev/null)"
+      #
+      # Deliberately its own token, not the sibling hextra checkout's: each is
+      # a fine-grained PAT scoped to a single repository, so neither container
+      # can act on the other's repo. No fallback to HEXTRA_GH_TOKEN for the
+      # same reason - silently borrowing it would both defeat the scoping and
+      # hide a missing export.
+      #
+      # VS Code resolves .zshrc in a spawned shell at startup, so this reaches
+      # the container however VS Code was launched - Dock and Spotlight
+      # included, not just `code .` from a terminal. Nothing is written to
+      # disk: no .env, and unlike containerEnv no plaintext copy lands in the
+      # generated compose override under globalStorage.
+      #
+      # The `:-` default keeps compose quiet when the variable is unset; `gh` is
+      # simply unauthenticated then.
+      - GH_TOKEN=${HOMELABCENTRAL_GH_TOKEN:-}
+      # safe.directory for the workspace, injected as environment rather than
+      # written by a lifecycle command. devcontainer.json's postStartCommand
+      # sets the same value, but it races the VS Code Git extension, which
+      # checks the repository as the window opens and reports "the folder is
+      # owned by someone other than the current user" if it gets there first.
+      # Environment is present from PID 1, so there is no window to lose.
+      #
+      # GIT_CONFIG_COUNT/KEY/VALUE is git's own mechanism for passing config
+      # through the environment (git-config(1), ENVIRONMENT); it adds to the
+      # configured values rather than replacing them, so the postStartCommand
+      # entry remains harmless.
+      #
+      # Why the setting is needed at all: Docker Desktop's VirtioFS
+      # intermittently serves uid 0 for the ROOT INODE of a bind mount - the
+      # mount root has no parent to be looked up from and is answered by a
+      # separate code path, so children are never affected. Git checks the
+      # ownership of the worktree, which here is that mount root. Nothing can
+      # repair the value; it is fabricated per read. See docker/for-mac#6298.
+      - GIT_CONFIG_COUNT=1
+      - GIT_CONFIG_KEY_0=safe.directory
+      - GIT_CONFIG_VALUE_0=/workspaces/homelabcentral.net
+    volumes:
+      - ..:/workspaces/homelabcentral.net:cached
+      # Named volume masks node_modules so the container keeps its own
+      # Linux-native binaries instead of sharing the host's Darwin ones
+      # through the bind mount.
+      - node_modules:/workspaces/homelabcentral.net/node_modules
+      # Host SSH config and keys, read-only, so git inside the container picks
+      # the same per-host identity the host does.
+      #
+      # The keys are never unlocked here: VS Code forwards the host ssh-agent
+      # automatically and the agent does the signing. This mount exists only so
+      # ssh can read ~/.ssh/config and the IdentityFile paths it names, which is
+      # the only way to pick one identity out of a multi-key agent - and this
+      # repo is owned by a different GitHub account than the host default, so
+      # picking the right key is not optional.
+      #
+      # Long syntax, not a string: the compose path through the devcontainers
+      # CLI re-emits mounts via convertMountToVolume(), whose Mount interface
+      # has no readonly field, so `readonly` in a mount STRING is silently
+      # dropped. read_only here survives.
+      #
+      # Requires `IgnoreUnknown UseKeychain` in a leading `Host *` block on the
+      # host: UseKeychain is macOS-only and Linux OpenSSH aborts the whole file
+      # on it ("Bad configuration option: usekeychain").
+      - type: bind
+        source: ${HOME}/.ssh
+        target: /home/vscode/.ssh
+        read_only: true
+    # Keep the container alive; the dev container attaches to it.
+    command: sleep infinity
+
+volumes:
+  # Per-container node_modules; the host keeps its own copy on disk.
+  node_modules:
