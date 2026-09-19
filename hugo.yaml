@@ -194,6 +194,39 @@ params:
     enable: true
     base: "https://github.com/homelabcentral/homelabcentral.github.io/edit/main/content"
 
+  # Comments, via giscus (GitHub Discussions). Hosted on the PUBLISHED repo,
+  # not this one: giscus requires a public repo, and `.github.io` has to stay
+  # public for Pages to serve it. `force_orphan` rewrites that repo's history
+  # on every publish, which is harmless here - Discussions are repo-level and
+  # never touched by a ref rewrite.
+  #
+  # The "Comments" category is Announcement-format, so only maintainers and the
+  # giscus bot can open threads. With `mapping: pathname` that is a correctness
+  # property rather than tidiness: in an open category a stranger could
+  # pre-create a discussion titled with a page's pathname and have giscus adopt
+  # it as that page's comment thread. Anyone with a GitHub account can still
+  # comment and react; there is no anonymous commenting.
+  #
+  # repoId and categoryId are GitHub node IDs, generated at https://giscus.app.
+  #
+  # `enable: false` is the SITE default and deliberately stays off, because it
+  # would also switch comments on for docs pages. Blog posts opt in through the
+  # `cascade` in content/blog/_index.md - components/comments.html prefers a
+  # page's own `comments` param over this one, in either direction.
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: homelabcentral/homelabcentral.github.io
+      repoId: "R_kgDOUgXTrQ"
+      category: Comments
+      categoryId: "DIC_kwDOUgXTrc4DF9yb"
+      mapping: pathname
+      strict: 0
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: bottom
+
   # Layout widths. Three values each: full (100%), wide (90rem), normal (80rem).
   # navbar and footer take the same scale independently of the page body.
   page:
