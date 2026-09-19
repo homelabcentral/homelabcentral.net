@@ -1,5 +1,8 @@
 # homelabcentral.net
 
+[![Deploy](https://github.com/homelabcentral/homelabcentral.net/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/homelabcentral/homelabcentral.net/actions/workflows/pages.yml)
+[![Build check](https://github.com/homelabcentral/homelabcentral.net/actions/workflows/build-check.yml/badge.svg)](https://github.com/homelabcentral/homelabcentral.net/actions/workflows/build-check.yml)
+
 Hugo site for [homelabcentral.net](https://homelabcentral.net), built with the
 [Hextra](https://github.com/homelabcentral/hextra) theme and deployed to GitHub
 Pages from `homelabcentral/homelabcentral.github.io`.
