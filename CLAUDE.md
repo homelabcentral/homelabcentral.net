@@ -25,9 +25,19 @@ For any new article, doc page, layout change or config change:
    (`gh pr create`) or a local merge, whichever the user asks for.
 4. Push `main`. That push is the publish.
 
-Pushing a feature branch is safe and does nothing: `.github/workflows/pages.yml`
-triggers only on `push` to `main`. Nothing on any other branch reaches the live
-site.
+Pushing a feature branch is safe and does nothing to the live site:
+`.github/workflows/pages.yml` triggers only on `push` to `main`. What a branch
+push does trigger is `.github/workflows/build-check.yml`, which builds the site
+with the same flags as the publish job and throws the output away.
+
+`main` is protected by a ruleset: no direct pushes, no force-pushes, no
+deletion, and a PR whose "Build site" check has passed. That check name is the
+`name:` of the job in build-check.yml - renaming the job detaches the
+requirement without any error, so change both together or neither.
+
+On a pull request the check builds the *merge result*, not the branch tip, so a
+branch that builds alone but conflicts semantically with current `main` still
+fails.
 
 Do not push to `main` without being asked. "Commit this" is not "publish this".
 
