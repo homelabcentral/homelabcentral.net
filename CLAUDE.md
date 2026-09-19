@@ -70,6 +70,8 @@ Consequences worth remembering:
 
 ## Commands
 
+`make` on its own prints the annotated list, grouped. The ones worth knowing:
+
 ```shell
 make dev        # authoring: live reload, drafts and future posts, :8043
 make preview    # what ships: production env, minified, no drafts, :8043
@@ -82,6 +84,46 @@ npm run format  # prettier, including Go templates
 `make dev` for writing, `make preview` for checking what ships — drafts and
 `hugo.IsProduction`-gated features (analytics, among others) behave differently
 between them.
+
+### Creating content
+
+```shell
+make new-blog   # prompts for title, slug, author, series, tags, cover text
+make new-doc    # prompts for title, path, weight
+make new-page NAME=showcase/thing   # bare page from archetypes/default.md
+```
+
+`new-blog` and `new-doc` write the front matter this site actually uses rather
+than `archetypes/default.md`'s four lines, so prefer them over `hugo new` for
+those two sections. Every prompt can be pre-answered, which also makes them
+usable without a terminal:
+
+```shell
+make new-blog TITLE="Rack cooling" TAGS="hardware,cooling" SERIES=Foundation
+```
+
+An empty answer omits the key rather than leaving a blank one, and neither
+target overwrites an existing file.
+
+### Pull requests and CI
+
+These run `gh`, so they need the dev container — the host's `gh` is
+authenticated as a different account and is not a collaborator here.
+
+```shell
+make gh-auth    # is gh authenticated, and as whom
+make git-auth   # git identity, ssh-agent, origin reachability
+make pr TITLE="..."         # open a PR for the current branch
+make pr-checks              # watch the Build site gate
+make gh-runs BRANCH=main    # Actions runs for any branch, checked out or not
+```
+
+`BRANCH=` works on `gh-runs`, `gh-watch` and `gh-rerun`, defaulting to the
+current branch; `gh-runs` also takes `STATUS=` and `LIMIT=`. Everything that
+changes state on GitHub prompts first and defaults to no — `YES=1` bypasses.
+
+`make gh-dispatch` triggers `pages.yml` by hand. That is the publish, so it is
+guarded hardest of all.
 
 ## The theme is a Hugo Module
 
