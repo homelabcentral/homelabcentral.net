@@ -21,13 +21,26 @@ For any new article, doc page, layout change or config change:
 1. Branch first — `git switch -c post/rack-cooling`, `docs/proxmox-setup`,
    `fix/hero-spacing`. Branch naming is loose; the branching is not.
 2. Commit the work there.
-3. Merge to `main` only when it is ready to be public — either a PR
-   (`gh pr create`) or a local merge, whichever the user asks for.
-4. Push `main`. That push is the publish.
+3. Push the branch. The build check runs.
+4. Open a PR (`gh pr create`) when it is ready to be public.
+5. Merge the PR. That merge is the publish.
 
-Pushing a feature branch is safe and does nothing: `.github/workflows/pages.yml`
-triggers only on `push` to `main`. Nothing on any other branch reaches the live
-site.
+A local merge followed by `git push origin main` no longer works - the ruleset
+rejects it. Merging through a PR is the only route in.
+
+Pushing a feature branch is safe and does nothing to the live site:
+`.github/workflows/pages.yml` triggers only on `push` to `main`. What a branch
+push does trigger is `.github/workflows/build-check.yml`, which builds the site
+with the same flags as the publish job and throws the output away.
+
+`main` is protected by a ruleset: no direct pushes, no force-pushes, no
+deletion, and a PR whose "Build site" check has passed. That check name is the
+`name:` of the job in build-check.yml - renaming the job detaches the
+requirement without any error, so change both together or neither.
+
+On a pull request the check builds the *merge result*, not the branch tip, so a
+branch that builds alone but conflicts semantically with current `main` still
+fails.
 
 Do not push to `main` without being asked. "Commit this" is not "publish this".
 
@@ -186,3 +199,22 @@ Compose-based, in `.devcontainer/`. Two things it does that are easy to break:
 If `GH_TOKEN` is empty in the container, the usual cause is VS Code's cached
 shell environment, which is resolved once per app session. Quit VS Code fully
 and relaunch — Reload Window and Rebuild Container both reuse the cache.
+
+## Skill routing
+
+When the user's request matches an available skill, invoke it via the Skill tool. When in doubt, invoke the skill.
+
+Key routing rules:
+- Product ideas/brainstorming → invoke /office-hours
+- Strategy/scope → invoke /plan-ceo-review
+- Architecture → invoke /plan-eng-review
+- Design system/plan review → invoke /design-consultation or /plan-design-review
+- Full review pipeline → invoke /autoplan
+- Bugs/errors → invoke /investigate
+- QA/testing site behavior → invoke /qa or /qa-only
+- Code review/diff check → invoke /review
+- Visual polish → invoke /design-review
+- Ship/deploy/PR → invoke /ship or /land-and-deploy
+- Save progress → invoke /context-save
+- Resume context → invoke /context-restore
+- Author a backlog-ready spec/issue → invoke /spec
