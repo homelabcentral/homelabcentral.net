@@ -21,9 +21,12 @@ For any new article, doc page, layout change or config change:
 1. Branch first — `git switch -c post/rack-cooling`, `docs/proxmox-setup`,
    `fix/hero-spacing`. Branch naming is loose; the branching is not.
 2. Commit the work there.
-3. Merge to `main` only when it is ready to be public — either a PR
-   (`gh pr create`) or a local merge, whichever the user asks for.
-4. Push `main`. That push is the publish.
+3. Push the branch. The build check runs.
+4. Open a PR (`gh pr create`) when it is ready to be public.
+5. Merge the PR. That merge is the publish.
+
+A local merge followed by `git push origin main` no longer works - the ruleset
+rejects it. Merging through a PR is the only route in.
 
 Pushing a feature branch is safe and does nothing to the live site:
 `.github/workflows/pages.yml` triggers only on `push` to `main`. What a branch
