@@ -50,6 +50,20 @@ services:
       # The `:-` default keeps compose quiet when the variable is unset; `gh` is
       # simply unauthenticated then.
       - GH_TOKEN=${HOMELABCENTRAL_GH_TOKEN:-}
+      # Container images default to UTC, which puts every timestamp the
+      # container writes - `hugo new` front matter dates, git author times,
+      # build logs - hours away from the host's. HOST_TZ comes from the same
+      # guarded block in ~/.zshrc as the token above, derived there from the
+      # host's /etc/localtime. The image already carries /usr/share/zoneinfo,
+      # so a zone name resolves without installing tzdata.
+      #
+      # Unlike the token, this is shared with the sibling hextra checkout
+      # rather than named per repository: it is not a credential, so there is
+      # nothing to scope.
+      #
+      # TZ is read at process start, so changing it needs a container rebuild,
+      # not a Reload Window.
+      - TZ=${HOST_TZ:-Etc/UTC}
       # safe.directory for the workspace, injected as environment rather than
       # written by a lifecycle command. devcontainer.json's postStartCommand
       # sets the same value, but it races the VS Code Git extension, which
