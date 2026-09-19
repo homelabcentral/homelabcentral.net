@@ -190,9 +190,13 @@ params:
       # full | forward | reverse | strict
       tokenize: forward
 
+  # Points at the SOURCE repo. The published repo holds rendered output and has
+  # no `content/` directory, so an edit link into it 404s on every page. If this
+  # repo is ever made private, set `enable: false` rather than repointing - the
+  # link would 404 again for anyone without access.
   editURL:
     enable: true
-    base: "https://github.com/homelabcentral/homelabcentral.github.io/edit/main/content"
+    base: "https://github.com/homelabcentral/homelabcentral.net/edit/main/content"
 
   # Comments, via giscus (GitHub Discussions). Hosted on the PUBLISHED repo,
   # not this one: giscus requires a public repo, and `.github.io` has to stay
