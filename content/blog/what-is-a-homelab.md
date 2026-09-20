@@ -9,6 +9,11 @@ tags:
   - basics
   - foundations
 excludeSearch: false
+# The excerpt shown on the blog card and on tag pages. This post has no
+# `description` and no `<!--more-->` marker, so it also fills
+# `<meta name="description">` and `og:description`. Without it both fall back
+# to Hugo's automatic summary - the opening words of the body, cut at 70.
+summary: "A spare computer that stays on, quietly doing something useful for you. What a homelab actually is, what runs on one, and why you would want one."
 # `coverText` renders the title line in the card's cover slot, with the prompt
 # glyph from params.command.prompt, until there is a real cover image.
 coverText: |
