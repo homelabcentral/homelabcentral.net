@@ -11,7 +11,15 @@ tags:
   - git
   - ssh
   - security
+  - dev
 excludeSearch: false
+# The excerpt shown on the blog card and on tag pages. Card-only here: the
+# `<!--more-->` marker further down outranks front matter for Hugo's own
+# `.Summary`, which is what feeds `<meta name="description">` and
+# `og:description`, so the meta text stays the lead paragraph. Without this
+# key the card would show that same lead, which is written to open the post
+# rather than to sell it in two lines.
+summary: "Two GitHub identities on one laptop, kept apart by a dev container, an SSH key and a token. Runs the same on macOS, Ubuntu and Windows with WSL."
 # Keeps every platform tab block on the page in step with the others.
 tabs:
   sync: true
@@ -297,7 +305,7 @@ Remote SSH, "the host" means the **remote** machine, not your laptop.
 
 {{< tabs >}}
 
-{{< tab name="macOS" icon="lock-closed" selected=true >}}
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
 
 The login keychain, unlocked when you log in. `security` is built in.
 
@@ -318,7 +326,7 @@ security find-generic-password -a personal -s gh-token-personal -w
 
 {{< /tab >}}
 
-{{< tab name="Ubuntu — graphical login" icon="desktop-computer" >}}
+{{< tab name="Ubuntu — graphical login" icon="iconify:bi/ubuntu" >}}
 
 A desktop session has a login keyring, unlocked by PAM when you sign in. That
 is the direct counterpart to the macOS keychain.
@@ -348,7 +356,7 @@ so a typo returns empty rather than an error.
 
 {{< /tab >}}
 
-{{< tab name="Ubuntu — no graphical login" icon="server" >}}
+{{< tab name="Ubuntu — no graphical login" icon="iconify:bi/terminal" >}}
 
 A headless server, a Remote SSH target, or WSL has no unlocked login keyring,
 and `secret-tool` will quietly return nothing. Use `pass`, which is GPG-backed
@@ -397,7 +405,7 @@ process, and in no terminal you ever type into.
 
 {{< tabs >}}
 
-{{< tab name="macOS" icon="lock-closed" selected=true >}}
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
 
 ```zsh {filename="~/.zshrc"}
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -408,7 +416,7 @@ fi
 
 {{< /tab >}}
 
-{{< tab name="Ubuntu — graphical login" icon="desktop-computer" >}}
+{{< tab name="Ubuntu — graphical login" icon="iconify:bi/ubuntu" >}}
 
 ```zsh {filename="~/.zshrc"}
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -419,7 +427,7 @@ fi
 
 {{< /tab >}}
 
-{{< tab name="Ubuntu — no graphical login" icon="server" >}}
+{{< tab name="Ubuntu — no graphical login" icon="iconify:bi/terminal" >}}
 
 ```zsh {filename="~/.zshrc"}
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -453,7 +461,7 @@ Dockerfile-based ones put them straight in `devcontainer.json`.
 
 {{< tabs >}}
 
-{{< tab name="docker-compose.yml" icon="template" selected=true >}}
+{{< tab name="docker-compose.yml" icon="iconify:simple-icons/docker" selected=true >}}
 
 ```yaml {filename=".devcontainer/docker-compose.yml",hl_lines=[6]}
 services:
@@ -493,7 +501,7 @@ file and naming the service:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="document-text" >}}
+{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
 
 No compose file, so both go in `devcontainer.json` directly:
 
@@ -554,7 +562,7 @@ the alias, `known_hosts` so GitHub's host key is already trusted:
 
 {{< tabs >}}
 
-{{< tab name="docker-compose.yml" icon="template" selected=true >}}
+{{< tab name="docker-compose.yml" icon="iconify:simple-icons/docker" selected=true >}}
 
 ```yaml {filename=".devcontainer/docker-compose.yml"}
 services:
@@ -578,7 +586,7 @@ services:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="document-text" >}}
+{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
 
 ```json {filename=".devcontainer/devcontainer.json"}
 {
@@ -626,7 +634,7 @@ public, so mount just those two:
 
 {{< tabs >}}
 
-{{< tab name="docker-compose.yml" icon="template" selected=true >}}
+{{< tab name="docker-compose.yml" icon="iconify:simple-icons/docker" selected=true >}}
 
 ```yaml {filename=".devcontainer/docker-compose.yml"}
     volumes:
@@ -643,7 +651,7 @@ public, so mount just those two:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="document-text" >}}
+{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
 
 ```json {filename=".devcontainer/devcontainer.json"}
   "mounts": [

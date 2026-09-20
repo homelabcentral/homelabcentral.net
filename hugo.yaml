@@ -329,13 +329,22 @@ params:
       # date | lastmod | publishDate | title | weight
       sortBy: date
       sortOrder: desc
-      pagerSize: 20
+      pagerSize: 15
       # Post cards with a cover, reading time and excerpt. Removing this block
       # is what drops back to the plain list.
       card:
         enable: true
         cover: true
         readingTime: true
+        # Card shape, chosen independently for the two pages this list feeds:
+        # `layout` is /blog, `termLayout` is a tag term page. `vertical` puts
+        # the cover above the text and lets the card grow with its content;
+        # `horizontal` puts the cover on the inline-start 40%, keeps every
+        # card the same height from `sm` up, and hides the cover below that.
+        # These two values are what the theme rendered before the keys
+        # existed, so they are defaults made explicit rather than a change.
+        layout: vertical
+        termLayout: horizontal
 
     article:
       displayPagination: true
