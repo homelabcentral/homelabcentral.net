@@ -4,3 +4,5 @@ github.com/homelabcentral/hextra v0.14.2 h1:ePVPANVPvq6LKg81pSxV41e5/NGt6tmEdMy2
 github.com/homelabcentral/hextra v0.14.2/go.mod h1:skK2vUqsBkwNf+dSxP8d/8w+kyaFUbQzb7fT3fQhJnY=
 github.com/homelabcentral/hextra v0.15.0 h1:5R1ZEY9kZQPvf8qpVmzpDIXgN+PkMWflB6Ynxkn9uok=
 github.com/homelabcentral/hextra v0.15.0/go.mod h1:skK2vUqsBkwNf+dSxP8d/8w+kyaFUbQzb7fT3fQhJnY=
+github.com/homelabcentral/hextra v0.16.0 h1:oKecmRzAncB4Cn03fQJC3K23JKheL57pWdE+orqSwic=
+github.com/homelabcentral/hextra v0.16.0/go.mod h1:skK2vUqsBkwNf+dSxP8d/8w+kyaFUbQzb7fT3fQhJnY=
