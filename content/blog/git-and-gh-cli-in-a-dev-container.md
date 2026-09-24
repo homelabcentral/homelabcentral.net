@@ -501,7 +501,7 @@ file and naming the service:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
+{{< tab name="devcontainer.json" icon="iconify:catppuccin/devcontainer" >}}
 
 No compose file, so both go in `devcontainer.json` directly:
 
@@ -586,7 +586,7 @@ services:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
+{{< tab name="devcontainer.json" icon="iconify:catppuccin/devcontainer" >}}
 
 ```json {filename=".devcontainer/devcontainer.json"}
 {
@@ -651,7 +651,7 @@ public, so mount just those two:
 
 {{< /tab >}}
 
-{{< tab name="devcontainer.json" icon="iconify:codicon/vm" >}}
+{{< tab name="devcontainer.json" icon="iconify:catppuccin/devcontainer" >}}
 
 ```json {filename=".devcontainer/devcontainer.json"}
   "mounts": [
@@ -667,6 +667,75 @@ public, so mount just those two:
 The trade-off is scope: `core.sshCommand` covers git and nothing else, so
 `ssh -T github-personal` stops working as a check inside the container. Use
 `git ls-remote` instead.
+
+**Option 3 — declare the identity in the container, not on the host.** Options
+1 and 2 both read something the host owns. Which identity a container uses is a
+property of the container, so put it in the repository and bind one key to a
+fixed path:
+
+```sshconfig {filename=".devcontainer/ssh-config"}
+Host github.com github-personal
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_container.pub
+  IdentitiesOnly yes
+```
+
+Nothing there names a key, a host path or an account. Both spellings resolve to
+the same identity, so a bare `git@github.com` inside the container can no longer
+land on the wrong one.
+
+{{< tabs >}}
+
+{{< tab name="docker-compose.yml" icon="iconify:simple-icons/docker" selected=true >}}
+
+```yaml {filename=".devcontainer/docker-compose.yml"}
+services:
+  dev:
+    volumes:
+      - ..:/workspaces/your-project:cached
+      - ssh_home:/home/vscode/.ssh
+      - type: bind
+        source: ${HOME}/.ssh/${PROJECT_SSH_KEY:-id_ed25519_personal}.pub
+        target: /home/vscode/.ssh/id_container.pub
+        read_only: true
+
+volumes:
+  ssh_home:
+```
+
+{{< /tab >}}
+
+{{< tab name="devcontainer.json" icon="iconify:catppuccin/devcontainer" >}}
+
+```json {filename=".devcontainer/devcontainer.json"}
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh/id_ed25519_personal.pub,target=/home/vscode/.ssh/id_container.pub,type=bind,readonly"
+  ]
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+The config is in the repository and the repository is already mounted, so
+symlink it rather than binding the same bytes twice — an edit then applies on
+the next connection instead of the next rebuild:
+
+```json {filename=".devcontainer/devcontainer.json"}
+  "postCreateCommand": "sudo chown \"$(id -u):$(id -g)\" /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config"
+```
+
+`~/.ssh` is a named volume so `known_hosts` is written once and survives a
+rebuild. Docker creates that volume root-owned, which is what the `chown` is
+for — non-recursive, because the key mounted inside it is read-only.
+
+Three things fall out of it. The host's config is never parsed, so
+`IgnoreUnknown UseKeychain` stops being a requirement. The choice of key is one
+variable, so a second repository copies the same file and points at a different
+key. And `.pub` is enough while the agent is forwarded — bind the private half
+to `id_container` as well, and point `IdentityFile` there, only if you also
+need git to work without it.
 
 {{< callout type="info" >}}
 Outside VS Code, the `devcontainer` CLI does not forward the agent for you:
@@ -840,6 +909,61 @@ share nothing, so fix them separately.
 
 {{< /accordion >}}
 
+## Dev container timezone
+
+Container images default to UTC. Every timestamp the container writes — commit
+author times, generated front matter dates, build logs — lands hours away from
+the host's.
+
+The host already knows its zone. Read it in the same guard as the token:
+
+{{< tabs >}}
+
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
+
+```zsh {filename="~/.zshrc"}
+if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
+  export HOST_TZ="${$(readlink /etc/localtime)##*/zoneinfo/}"
+fi
+```
+
+{{< /tab >}}
+
+{{< tab name="Ubuntu" icon="iconify:bi/ubuntu" >}}
+
+```zsh {filename="~/.zshrc"}
+if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
+  export HOST_TZ="$(timedatectl show -p Timezone --value 2>/dev/null)"
+fi
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+Then pass it in as `TZ`, alongside the token:
+
+```yaml {filename=".devcontainer/docker-compose.yml",hl_lines=[3]}
+    environment:
+      - GH_TOKEN=${PERSONAL_GH_TOKEN:-}
+      - TZ=${HOST_TZ:-Etc/UTC}
+```
+
+Image-based containers use `"remoteEnv": { "TZ": "${localEnv:HOST_TZ}" }`. The
+fallback keeps an unset variable quiet: you get UTC, which is where you already
+were.
+
+Most base images carry `/usr/share/zoneinfo`, so a zone name resolves without
+installing `tzdata`.
+
+Unlike the token, this is not a credential and needs no per-project name — one
+`HOST_TZ` serves every container on the machine.
+
+{{< callout type="warning" >}}
+`TZ` is read once, when a process starts. Changing it needs a container rebuild,
+not a *Reload Window*.
+{{< /callout >}}
+
 ## Platform summary
 
 | | macOS | Ubuntu, graphical login | Ubuntu, headless |
@@ -849,6 +973,7 @@ share nothing, so fix them separately.
 | Read | `security find-generic-password` | `secret-tool lookup` | `pass show` |
 | Unlocked by | macOS login | PAM at sign-in | `gpg-agent`, once per boot |
 | SSH passphrase persists via | `UseKeychain` | `gcr-ssh-agent` + keyring | agent lifetime only |
+| Timezone | `readlink /etc/localtime` | `timedatectl show -p Timezone --value` | same |
 
 Everything else is identical on all three: the guard, the compose file, the
 rename to `GH_TOKEN`, the read-only `~/.ssh` mount.
