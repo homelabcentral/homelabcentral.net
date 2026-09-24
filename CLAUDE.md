@@ -306,10 +306,17 @@ the wrong key.
 
 Compose-based, in `.devcontainer/`. Two things it does that are easy to break:
 
-- Bind-mounts `~/.ssh` read-only, in long syntax. A mount *string*'s `readonly`
-  flag is silently dropped on the compose code path; `read_only: true` under
-  long syntax survives. The mount exists so ssh can read `~/.ssh/config` and
-  pick the right key out of the forwarded agent.
+- Mounts exactly one SSH key, not the host's `~/.ssh`. `${HOME}/.ssh/`
+  `${HOMELABCENTRAL_SSH_KEY:-homelabcentral}` and its `.pub` are bound
+  read-only to `~/.ssh/id_container`, and `.devcontainer/ssh-config` — named by
+  `IdentityFile` with `IdentitiesOnly yes` — is symlinked over `~/.ssh/config`
+  by `postCreateCommand`. The forwarded agent still does the signing; this only
+  narrows which identity is offered, and mounting the whole of `~/.ssh` is what
+  dragged every other one in. `~/.ssh` itself is a named volume so
+  `known_hosts` survives a rebuild. Long syntax, not a mount *string*: a
+  string's `readonly` flag is silently dropped on the compose code path, and
+  these are real private keys. The host no longer needs
+  `IgnoreUnknown UseKeychain` — its config is never parsed here.
 - Reads `GH_TOKEN` from `HOMELABCENTRAL_GH_TOKEN` on the host, exported from
   `~/.zshrc` behind a `VSCODE_RESOLVING_ENVIRONMENT` guard. The rename keeps the
   host's own `gh` credentials untouched.
