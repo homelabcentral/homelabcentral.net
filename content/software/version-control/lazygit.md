@@ -6,7 +6,7 @@ description: "Terminal UI for Git."
 
 {{< lead >}}The Git operations that are genuinely better with a UI — staging hunks, interactive rebase, resolving conflicts.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/lazygit" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/jesseduffield/lazygit/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/lazygit" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/jesseduffield/lazygit/releases" >}}
 
 ## What it does
 

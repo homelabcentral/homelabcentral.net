@@ -6,7 +6,7 @@ description: "Make and edit GIFs on macOS."
 
 {{< lead >}}A small App Store utility for turning clips and images into GIFs.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id6751730393" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id6751730393" >}}
 
 ## What it does
 

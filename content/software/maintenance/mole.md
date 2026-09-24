@@ -6,7 +6,7 @@ description: "Deep clean and optimise a Mac from the command line."
 
 {{< lead >}}A CLI cleaner: caches, logs, developer junk and orphaned files, with a dry run first.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/mole" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/mole" >}}
 
 ## What it does
 

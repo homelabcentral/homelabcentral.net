@@ -6,7 +6,7 @@ description: "Crawl a website and audit SEO, performance, accessibility and secu
 
 {{< lead >}}Crawls an entire site, scores it, and can export the whole thing to browsable offline HTML.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://github.com/janreges/homebrew-tap" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/janreges/siteone-crawler/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/janreges/homebrew-tap" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/janreges/siteone-crawler/releases" >}}
 
 ## What it does
 

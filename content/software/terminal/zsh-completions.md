@@ -6,7 +6,7 @@ description: "Extra completion definitions for Zsh."
 
 {{< lead >}}Completion scripts for hundreds of commands Zsh does not ship definitions for.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/zsh-completions" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/zsh-completions" >}}
 
 ## What it does
 

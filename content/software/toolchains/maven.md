@@ -6,7 +6,7 @@ description: "Java build and dependency management."
 
 {{< lead >}}Declarative builds for JVM projects, driven by a `pom.xml`.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/maven" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://maven.apache.org/download.cgi" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/maven" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://maven.apache.org/download.cgi" >}}
 
 ## What it does
 

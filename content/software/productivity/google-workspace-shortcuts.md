@@ -6,7 +6,7 @@ description: "Chrome web app shortcuts for the Google editors."
 
 {{< lead >}}Not applications — Chrome shortcuts that open the Google editors in their own window.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" >}}
 
 ## What it does
 

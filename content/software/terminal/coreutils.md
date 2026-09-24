@@ -6,7 +6,7 @@ description: "GNU versions of the standard Unix file, shell and text utilities."
 
 {{< lead >}}The GNU `ls`, `cp`, `date`, `sed`-adjacent tools, because macOS ships the BSD ones.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/coreutils" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/coreutils" >}}
 
 ## What it does
 

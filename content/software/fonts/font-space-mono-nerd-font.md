@@ -6,7 +6,7 @@ description: "Space Mono, patched with Nerd Font glyphs."
 
 {{< lead >}}Colophon Foundry's quirky monospace, for display use more than long code sessions.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/font-space-mono-nerd-font" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/ryanoasis/nerd-fonts/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/font-space-mono-nerd-font" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/ryanoasis/nerd-fonts/releases" >}}
 
 ## What it does
 

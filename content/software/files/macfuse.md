@@ -6,7 +6,7 @@ description: "Filesystem in Userspace for macOS."
 
 {{< lead >}}The kernel extension that lets third-party filesystems be implemented as ordinary programs.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/macfuse" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://macfuse.github.io/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/macfuse" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://macfuse.github.io/" >}}
 
 ## What it does
 

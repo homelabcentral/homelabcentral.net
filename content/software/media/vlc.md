@@ -6,7 +6,7 @@ description: "Plays nearly anything, from nearly anywhere."
 
 {{< lead >}}The universal fallback player, and a surprisingly capable streaming and conversion tool.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/vlc" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.videolan.org/vlc/download-macosx.html" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/vlc" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.videolan.org/vlc/download-macosx.html" >}}
 
 ## What it does
 

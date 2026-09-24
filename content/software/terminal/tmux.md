@@ -6,7 +6,7 @@ description: "Terminal multiplexer — detachable sessions and panes."
 
 {{< lead >}}Keeps shells alive independently of the terminal window attached to them.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/tmux" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/tmux/tmux/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/tmux" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/tmux/tmux/releases" >}}
 
 ## What it does
 

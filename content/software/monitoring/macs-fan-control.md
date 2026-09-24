@@ -6,7 +6,7 @@ description: "Monitor and control every fan and sensor."
 
 {{< lead >}}Reads all thermal sensors and lets you set fan speeds by a sensor-based curve.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/macs-fan-control" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://crystalidea.com/macs-fan-control/download" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/macs-fan-control" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://crystalidea.com/macs-fan-control/download" >}}
 
 ## What it does
 

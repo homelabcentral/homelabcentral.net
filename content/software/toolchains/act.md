@@ -6,7 +6,7 @@ description: "Run GitHub Actions workflows locally."
 
 {{< lead >}}Runs GitHub Actions workflows in local Docker containers, so a CI fix takes seconds instead of a push.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/act" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/act" >}}
 
 ## What it does
 

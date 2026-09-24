@@ -6,7 +6,7 @@ description: "Keep the Mac awake, on rules rather than a toggle."
 
 {{< lead >}}Prevents sleep — optionally until a condition stops being true, rather than until you remember to turn it off.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id937984704" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id937984704" >}}
 
 ## What it does
 

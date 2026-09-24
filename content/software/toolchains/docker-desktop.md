@@ -6,7 +6,7 @@ description: "Container runtime, CLI and dev container host."
 
 {{< lead >}}Linux containers on macOS, plus the CLI that dev containers and CI images are built with.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/docker-desktop" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.docker.com/products/docker-desktop/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/docker-desktop" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.docker.com/products/docker-desktop/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "A smarter `cd` that learns your most-used directories."
 
 {{< lead >}}Jump to a directory by a fragment of its name, ranked by how often and how recently you go there.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/zoxide" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/zoxide" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Mac App Store from the command line."
 
 {{< lead >}}Lists, installs and upgrades App Store apps — the missing half of a scripted machine setup.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/mas" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/mas" >}}
 
 ## What it does
 

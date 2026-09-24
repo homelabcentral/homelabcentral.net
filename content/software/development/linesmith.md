@@ -6,7 +6,7 @@ description: "Xcode source editor extension for line editing."
 
 {{< lead >}}Adds 31 line-editing and Swift-generation commands to Xcode's editor.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1234445803" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1234445803" >}}
 
 ## What it does
 

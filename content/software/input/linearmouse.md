@@ -6,7 +6,7 @@ description: "Per-device mouse and trackpad behaviour."
 
 {{< lead >}}Disables mouse acceleration, reverses scrolling per device, and remaps buttons.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/linearmouse" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://linearmouse.org/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/linearmouse" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://linearmouse.org/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Power and performance monitoring for Apple Silicon."
 
 {{< lead >}}Menu bar readout of package power, core frequencies and efficiency-versus-performance core usage.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/mx-power-gadget" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.seense.com/menubarstats/mxpg/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/mx-power-gadget" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.seense.com/menubarstats/mxpg/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Companion server for automating iOS simulators."
 
 {{< lead >}}Meta's iOS Development Bridge daemon — scripted control of simulators and devices.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://github.com/facebook/homebrew-fb" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/facebook/homebrew-fb" >}}
 
 ## What it does
 

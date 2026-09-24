@@ -6,7 +6,7 @@ description: "Generate .xcodeproj from a YAML spec."
 
 {{< lead >}}Generates the Xcode project from a spec file so the `.xcodeproj` never has to be committed.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/xcodegen" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/xcodegen" >}}
 
 ## What it does
 

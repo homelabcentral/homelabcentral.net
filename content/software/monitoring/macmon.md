@@ -6,7 +6,7 @@ description: "Sudoless performance and power monitoring for Apple Silicon."
 
 {{< lead >}}A terminal dashboard of CPU, GPU and ANE power draw, frequencies and temperatures — with no admin rights.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/macmon" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/macmon" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Adds abilities Amphetamine cannot have as a sandboxed app."
 
 {{< lead >}}A helper that gives Amphetamine a closed-display fail-safe and visibility of all running processes.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/x74353/Amphetamine-Enhancer/releases" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/x74353/Amphetamine-Enhancer/releases" >}}
 
 ## What it does
 

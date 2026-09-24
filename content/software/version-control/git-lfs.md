@@ -6,7 +6,7 @@ description: "Git extension for versioning large files."
 
 {{< lead >}}Keeps big binaries out of the repository history and stores pointers instead.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/git-lfs" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/git-lfs/git-lfs/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/git-lfs" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/git-lfs/git-lfs/releases" >}}
 
 ## What it does
 

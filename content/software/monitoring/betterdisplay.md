@@ -6,7 +6,7 @@ description: "Display management: resolutions, HiDPI, dummy displays and brightn
 
 {{< lead >}}Unlocks resolutions macOS hides, adds HiDPI modes, and creates virtual displays.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/betterdisplay" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/waydabber/BetterDisplay/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/betterdisplay" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/waydabber/BetterDisplay/releases" >}}
 
 ## What it does
 

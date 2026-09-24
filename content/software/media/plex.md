@@ -6,7 +6,7 @@ description: "Media server and client for a home library."
 
 {{< lead >}}Indexes a media library, fetches metadata, and streams it to anything with a screen.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/plex" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.plex.tv/media-server-downloads/?cat=plex+desktop" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/plex" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.plex.tv/media-server-downloads/?cat=plex+desktop" >}}
 
 ## What it does
 

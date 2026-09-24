@@ -6,7 +6,7 @@ description: "Open-source vector graphics editor."
 
 {{< lead >}}A full SVG editor — the free counterpart to Illustrator, and native to the web's vector format.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/inkscape" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://inkscape.org/release/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/inkscape" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://inkscape.org/release/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Fast incremental file transfer and synchronisation."
 
 {{< lead >}}The backup and sync workhorse: copies only what changed, locally or over SSH.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/rsync" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/rsync" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Extracts almost every archive format."
 
 {{< lead >}}Registers itself for every archive type macOS cannot open and extracts them on double-click.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/the-unarchiver" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/the-unarchiver/id425424353" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://theunarchiver.com/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/the-unarchiver" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/the-unarchiver/id425424353" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://theunarchiver.com/" >}}
 
 ## What it does
 

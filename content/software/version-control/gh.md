@@ -6,7 +6,7 @@ description: "GitHub from the command line — PRs, issues, runs, releases."
 
 {{< lead >}}Pull requests, checks and Actions runs without opening a browser.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/gh" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/cli/cli/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/gh" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/cli/cli/releases" >}}
 
 ## What it does
 

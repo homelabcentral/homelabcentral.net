@@ -6,7 +6,7 @@ description: "Verify system structure and run macOS maintenance tasks."
 
 {{< lead >}}A front end for the maintenance, cache and verification commands macOS hides.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/onyx" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.titanium-software.fr/en/onyx.html" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/onyx" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.titanium-software.fr/en/onyx.html" >}}
 
 ## What it does
 

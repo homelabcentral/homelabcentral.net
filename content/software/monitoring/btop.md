@@ -6,7 +6,7 @@ description: "Resource monitor for the terminal."
 
 {{< lead >}}The best-looking process and resource monitor that runs over SSH.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/btop" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/aristocratos/btop/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/btop" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/aristocratos/btop/releases" >}}
 
 ## What it does
 

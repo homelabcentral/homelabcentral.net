@@ -6,7 +6,7 @@ description: "System information summary, fast."
 
 {{< lead >}}The neofetch-style system summary, rewritten in C so it runs in milliseconds.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/fastfetch" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/fastfetch-cli/fastfetch/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/fastfetch" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/fastfetch-cli/fastfetch/releases" >}}
 
 ## What it does
 

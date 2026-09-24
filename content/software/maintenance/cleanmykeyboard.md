@@ -6,7 +6,7 @@ description: "Disable the keyboard so you can wipe it."
 
 {{< lead >}}Blocks keyboard and trackpad input temporarily so cleaning does not type anything.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id6468120888" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id6468120888" >}}
 
 ## What it does
 

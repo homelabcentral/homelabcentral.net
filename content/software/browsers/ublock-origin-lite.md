@@ -6,7 +6,7 @@ description: "Content blocker for Safari."
 
 {{< lead >}}Raymond Hill's blocker, rebuilt for the declarative extension API Safari and Chrome now require.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id6745342698" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id6745342698" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Turn the MacBook notch into a usable widget."
 
 {{< lead >}}Puts media controls, now-playing artwork and shortcuts into the notch area on hover.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://github.com/TheBoredTeam/homebrew-boring-notch" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/TheBoredTeam/boring.notch/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/TheBoredTeam/homebrew-boring-notch" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/TheBoredTeam/boring.notch/releases" >}}
 
 ## What it does
 

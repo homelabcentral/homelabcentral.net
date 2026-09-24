@@ -6,7 +6,7 @@ description: "Fast static site generator, shipped as a single binary."
 
 {{< lead >}}A single Go binary that turns Markdown and templates into the site you are reading.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/hugo" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/gohugoio/hugo/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/hugo" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/gohugoio/hugo/releases" >}}
 
 ## What it does
 

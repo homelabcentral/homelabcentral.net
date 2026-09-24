@@ -6,7 +6,7 @@ description: "Nintendo Switch emulator written in C#."
 
 {{< lead >}}A Switch emulator whose original project was shut down in 2024 and now continues as community forks.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://git.ryujinx.app/projects/Ryubing" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://git.ryujinx.app/projects/Ryubing" >}}
 
 ## What it does
 

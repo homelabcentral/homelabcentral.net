@@ -6,7 +6,7 @@ description: "SQLite-backed shell history with fuzzy search and optional sync."
 
 {{< lead >}}Replaces `~/.zsh_history` with a SQLite database you can actually search.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/atuin" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/atuin" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Static checker for GitHub Actions workflow files."
 
 {{< lead >}}Catches broken workflow YAML before a push burns a CI minute proving it.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/actionlint" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/rhysd/actionlint/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/actionlint" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/rhysd/actionlint/releases" >}}
 
 ## What it does
 

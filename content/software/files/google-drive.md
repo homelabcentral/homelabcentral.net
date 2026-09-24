@@ -6,7 +6,7 @@ description: "Google Drive desktop client with streamed files."
 
 {{< lead >}}Mounts Drive as a volume and syncs selected folders, rather than downloading everything.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/google-drive" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.google.com/drive/download/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/google-drive" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.google.com/drive/download/" >}}
 
 ## What it does
 

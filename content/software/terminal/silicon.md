@@ -6,7 +6,7 @@ description: "Render a source file to a PNG image."
 
 {{< lead >}}Turns code into a shareable image without a screenshot or a browser.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/silicon" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/silicon" >}}
 
 ## What it does
 

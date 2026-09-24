@@ -6,7 +6,7 @@ description: "Open-source video transcoder with presets."
 
 {{< lead >}}Turns any video into an H.264/H.265/AV1 file using presets that already know what devices want.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/handbrake-app" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://handbrake.fr/downloads.php" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/handbrake-app" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://handbrake.fr/downloads.php" >}}
 
 ## What it does
 

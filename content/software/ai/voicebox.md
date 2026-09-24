@@ -6,7 +6,7 @@ description: "Open-source local voice studio: dictation, TTS and voice cloning."
 
 {{< lead >}}Whisper dictation plus local text-to-speech and voice cloning, all on-device.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://voicebox.sh/" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://voicebox.sh/" >}}
 
 ## What it does
 

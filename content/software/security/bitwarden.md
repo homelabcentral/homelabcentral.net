@@ -6,7 +6,7 @@ description: "Open-source password manager, self-hostable."
 
 {{< lead >}}Credentials, TOTP codes and secure notes in an end-to-end encrypted vault you can host yourself.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1352778147" >}} {{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/bitwarden" >}} {{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/bitwarden-cli" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://bitwarden.com/download/" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1352778147" >}} {{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/bitwarden" >}} {{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/bitwarden-cli" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://bitwarden.com/download/" >}}
 
 ## What it does
 

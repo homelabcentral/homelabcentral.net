@@ -6,7 +6,7 @@ description: "Emulate mouse clicks and keystrokes from the command line."
 
 {{< lead >}}Scriptable mouse and keyboard events, for automating apps that expose no API.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/cliclick" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.bluem.net/en/projects/cliclick/" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/cliclick" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.bluem.net/en/projects/cliclick/" >}}
 
 ## What it does
 

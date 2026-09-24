@@ -6,7 +6,7 @@ description: "Rewrite Git history quickly and correctly."
 
 {{< lead >}}The supported way to remove a file, a secret or a path from every commit in a repository.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/git-filter-repo" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/git-filter-repo" >}}
 
 ## What it does
 

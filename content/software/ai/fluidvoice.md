@@ -6,7 +6,7 @@ description: "Offline voice-to-text dictation with AI cleanup."
 
 {{< lead >}}Hold a hotkey, speak, release — the transcript lands in whatever field has focus.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/fluidvoice" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://altic.dev/fluid" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/fluidvoice" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://altic.dev/fluid" >}}
 
 ## What it does
 

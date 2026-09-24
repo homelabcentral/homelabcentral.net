@@ -6,7 +6,7 @@ description: "Read, annotate and fill PDFs."
 
 {{< lead >}}The reference PDF reader, for forms and documents Preview mishandles.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/adobe-acrobat-reader" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://get.adobe.com/reader/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/adobe-acrobat-reader" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://get.adobe.com/reader/" >}}
 
 ## What it does
 

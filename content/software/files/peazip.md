@@ -6,7 +6,7 @@ description: "Open-source archive manager with strong encryption."
 
 {{< lead >}}Handles 200-plus archive formats, creates encrypted archives, and doubles as a file manager.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://peazip.github.io/peazip-macos.html" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://peazip.github.io/peazip-macos.html" >}}
 
 ## What it does
 

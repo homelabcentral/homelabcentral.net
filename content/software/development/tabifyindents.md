@@ -6,7 +6,7 @@ description: "Convert leading spaces to tabs and back, inside Xcode."
 
 {{< lead >}}Two Xcode editor commands: turn leading spaces into tabs, or tabs into spaces.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1179234554" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1179234554" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Cross-shell prompt written in Rust."
 
 {{< lead >}}A fast prompt that shows Git state, language versions and context, configured in one TOML file.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/starship" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/starship" >}}
 
 ## What it does
 

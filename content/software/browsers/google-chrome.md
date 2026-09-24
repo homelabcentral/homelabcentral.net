@@ -6,7 +6,7 @@ description: "Chrome, for compatibility and DevTools."
 
 {{< lead >}}The reference Chromium build — what most of the web is actually tested against.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/google-chrome" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.google.com/chrome/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/google-chrome" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.google.com/chrome/" >}}
 
 ## What it does
 

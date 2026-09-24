@@ -6,7 +6,7 @@ description: "Generate images of code and terminal output."
 
 {{< lead >}}Charm's screenshot tool for code and for ANSI terminal output, including SVG.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://github.com/charmbracelet/homebrew-tap" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/charmbracelet/homebrew-tap" >}}
 
 ## What it does
 

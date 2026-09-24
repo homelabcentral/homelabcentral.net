@@ -6,7 +6,7 @@ description: "`ls` with colours, icons and a tree mode."
 
 {{< lead >}}A colourful `ls` with file-type icons and a built-in tree view.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/lsd" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/lsd-rs/lsd/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/lsd" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/lsd-rs/lsd/releases" >}}
 
 ## What it does
 

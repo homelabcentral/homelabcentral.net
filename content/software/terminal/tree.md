@@ -6,7 +6,7 @@ description: "Print a directory as an indented tree."
 
 {{< lead >}}The original recursive directory lister — still the fastest way to paste a project layout into a document.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/tree" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/tree" >}}
 
 ## What it does
 

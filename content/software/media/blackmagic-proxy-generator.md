@@ -6,7 +6,7 @@ description: "Watch-folder proxy transcoding for Resolve."
 
 {{< lead >}}Watches a folder and automatically generates edit-friendly proxies for anything dropped into it.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Comprehensive system monitoring in the menu bar."
 
 {{< lead >}}CPU, GPU, memory, disks, network, sensors, battery and weather, all as menu bar items with history graphs.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/istat-menus" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://bjango.com/mac/istatmenus/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/istat-menus" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://bjango.com/mac/istatmenus/" >}}
 
 ## What it does
 

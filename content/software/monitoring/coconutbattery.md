@@ -6,7 +6,7 @@ description: "Live battery health for Macs and connected Apple devices."
 
 {{< lead >}}Design capacity versus current capacity, cycle count, temperature and charge wattage — for the Mac and anything plugged into it.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/coconutbattery" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.coconut-flavour.com/coconutbattery/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/coconutbattery" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.coconut-flavour.com/coconutbattery/" >}}
 
 ## What it does
 

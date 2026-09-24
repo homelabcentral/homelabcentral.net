@@ -6,7 +6,7 @@ description: "Drag an app onto it to uninstall it with its support files."
 
 {{< lead >}}The original macOS uninstaller: one window, drag, confirm.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/appcleaner" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://freemacsoft.net/appcleaner/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/appcleaner" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://freemacsoft.net/appcleaner/" >}}
 
 ## What it does
 

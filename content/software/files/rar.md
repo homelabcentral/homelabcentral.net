@@ -6,7 +6,7 @@ description: "RARLAB's official command-line RAR tools."
 
 {{< lead >}}The only tools that *create* RAR archives, plus the reference extractor.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/rar" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.rarlab.com/download.htm" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/rar" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.rarlab.com/download.htm" >}}
 
 ## What it does
 

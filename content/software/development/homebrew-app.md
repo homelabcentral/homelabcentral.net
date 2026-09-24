@@ -6,7 +6,7 @@ description: "Homebrew's official GUI."
 
 {{< lead >}}Homebrew's own graphical front end, for browsing and updating what the CLI installed.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/homebrew-app" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/homebrew-app" >}}
 
 ## What it does
 

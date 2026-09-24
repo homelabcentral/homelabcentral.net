@@ -6,7 +6,7 @@ description: "Maple Mono, rounded, with Nerd Font glyphs."
 
 {{< lead >}}A rounded open-source monospace with an unusually large ligature set and the finest-grained feature control of the group.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/font-maple-mono-nf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/subframe7536/maple-font/releases" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://font.subf.dev/en/playground" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/font-maple-mono-nf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/subframe7536/maple-font/releases" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://font.subf.dev/en/playground" >}}
 
 ## What it does
 

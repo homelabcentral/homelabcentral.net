@@ -6,7 +6,7 @@ description: "Interactive process viewer."
 
 {{< lead >}}The `top` replacement that is on every machine — still the fastest way to find and kill a process.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/htop" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/htop" >}}
 
 ## What it does
 

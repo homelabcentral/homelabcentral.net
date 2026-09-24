@@ -6,7 +6,7 @@ description: "Flash OS images to SD cards and USB drives."
 
 {{< lead >}}Writes an image to removable media, with validation, and without letting you pick the wrong disk.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/balenaetcher" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://etcher.balena.io/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/balenaetcher" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://etcher.balena.io/" >}}
 
 ## What it does
 

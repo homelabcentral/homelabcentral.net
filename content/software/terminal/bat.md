@@ -6,7 +6,7 @@ description: "`cat` with syntax highlighting, line numbers and Git integration."
 
 {{< lead >}}A `cat` clone that highlights syntax, shows Git modifications in the gutter, and pages automatically.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/bat" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/sharkdp/bat/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/bat" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/sharkdp/bat/releases" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Java development kit and runtime."
 
 {{< lead >}}The reference Java implementation — compiler, runtime and tooling.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/openjdk" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://jdk.java.net/" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/openjdk" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://jdk.java.net/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Uninstall apps and remove leftovers from ones already gone."
 
 {{< lead >}}Open-source uninstaller that also finds the files left behind by apps you deleted long ago.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/pearcleaner" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/alienator88/Pearcleaner/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/pearcleaner" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/alienator88/Pearcleaner/releases" >}}
 
 ## What it does
 

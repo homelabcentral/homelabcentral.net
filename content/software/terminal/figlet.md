@@ -6,7 +6,7 @@ description: "Print text as ASCII-art banners."
 
 {{< lead >}}Large ASCII letters, for script banners and terminal headers.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/figlet" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/figlet" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Modern terminal file manager."
 
 {{< lead >}}A TUI file manager with panes, a file preview, and an editor-like keymap.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/superfile" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/superfile" >}}
 
 ## What it does
 

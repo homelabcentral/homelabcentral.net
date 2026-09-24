@@ -6,7 +6,7 @@ description: "Disk throughput and IOPS benchmark."
 
 {{< lead >}}CrystalDiskMark's test suite on macOS — sequential and random read/write in MB/s and IOPS.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1168254295" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1168254295" >}}
 
 ## What it does
 

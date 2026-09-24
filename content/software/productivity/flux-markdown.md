@@ -6,7 +6,7 @@ description: "Markdown previews in Finder Quick Look."
 
 {{< lead >}}Press Space on a `.md` file and get rendered Markdown, with diagrams and maths.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://github.com/xykong/homebrew-tap" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/xykong/flux-markdown/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/xykong/homebrew-tap" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/xykong/flux-markdown/releases" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Real-time type-ahead completion for Zsh."
 
 {{< lead >}}Shows completion candidates as you type, without pressing Tab.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/zsh-autocomplete" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/zsh-autocomplete" >}}
 
 ## What it does
 

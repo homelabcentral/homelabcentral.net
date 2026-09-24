@@ -6,7 +6,7 @@ description: "Command-line audio and video downloader."
 
 {{< lead >}}Downloads media from a thousand-plus sites, with fine control over formats and metadata.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/yt-dlp" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/yt-dlp" >}}
 
 ## What it does
 

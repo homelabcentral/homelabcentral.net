@@ -6,7 +6,7 @@ description: "Local PDF toolkit — merge, split, convert, OCR, redact."
 
 {{< lead >}}Everything the online PDF converters do, without uploading the document to anyone.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/stirling-pdf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://stirling.com/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/stirling-pdf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://stirling.com/" >}}
 
 ## What it does
 

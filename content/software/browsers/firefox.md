@@ -6,7 +6,7 @@ description: "Independent browser engine."
 
 {{< lead >}}Gecko — the one major engine that is neither Chromium nor WebKit.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/firefox" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.mozilla.org/firefox/new/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/firefox" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.mozilla.org/firefox/new/" >}}
 
 ## What it does
 

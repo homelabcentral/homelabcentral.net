@@ -6,7 +6,7 @@ description: "Show everything persistently installed on the Mac."
 
 {{< lead >}}Enumerates every mechanism something can use to start itself, and checks each against VirusTotal.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/knockknock" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://objective-see.org/products/knockknock.html" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/knockknock" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://objective-see.org/products/knockknock.html" >}}
 
 ## What it does
 

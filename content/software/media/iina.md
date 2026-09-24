@@ -6,7 +6,7 @@ description: "Modern open-source media player for macOS."
 
 {{< lead >}}An mpv-based player that behaves like a Mac app rather than a port.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/iina" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://iina.io/download/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/iina" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://iina.io/download/" >}}
 
 ## What it does
 

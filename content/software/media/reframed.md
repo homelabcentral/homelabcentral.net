@@ -6,7 +6,7 @@ description: "Screen recorder with a built-in editor."
 
 {{< lead >}}Records the screen and opens straight into an editor for trimming, zooming and exporting.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://github.com/jkuri/homebrew-reframed" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/jkuri/Reframed/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/jkuri/homebrew-reframed" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/jkuri/Reframed/releases" >}}
 
 ## What it does
 

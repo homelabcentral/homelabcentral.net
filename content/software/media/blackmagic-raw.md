@@ -6,7 +6,7 @@ description: "BRAW codec, player and plugins."
 
 {{< lead >}}The system-level support that lets other applications read `.braw` footage.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.blackmagicdesign.com/support/family/capture-and-playback" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.blackmagicdesign.com/support/family/capture-and-playback" >}}
 
 ## What it does
 

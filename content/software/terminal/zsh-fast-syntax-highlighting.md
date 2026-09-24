@@ -6,7 +6,7 @@ description: "Syntax highlighting for the Zsh command line."
 
 {{< lead >}}Colours the command line as you type — invalid commands turn red before you hit Enter.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/zsh-fast-syntax-highlighting" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/zsh-fast-syntax-highlighting" >}}
 
 ## What it does
 

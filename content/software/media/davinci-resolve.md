@@ -6,7 +6,7 @@ description: "Professional non-linear editor, colour grading and audio post."
 
 {{< lead >}}Blackmagic's full post-production suite — edit, colour, VFX and audio in one application.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.blackmagicdesign.com/products/davinciresolve" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.blackmagicdesign.com/products/davinciresolve" >}}
 
 ## What it does
 

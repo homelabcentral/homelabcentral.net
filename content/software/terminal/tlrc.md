@@ -6,7 +6,7 @@ description: "Official tldr-pages client, written in Rust."
 
 {{< lead >}}Man pages replaced by six examples of what people actually type.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/tlrc" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/tlrc" >}}
 
 ## What it does
 

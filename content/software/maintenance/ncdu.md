@@ -6,7 +6,7 @@ description: "NCurses disk usage analyser."
 
 {{< lead >}}Scans a directory tree and lets you browse it sorted by size, in a terminal.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/ncdu" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/ncdu" >}}
 
 ## What it does
 

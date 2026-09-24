@@ -6,7 +6,7 @@ description: "Command-line image conversion and manipulation."
 
 {{< lead >}}Scriptable image work: convert, resize, composite, annotate, in batch.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/imagemagick" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://imagemagick.org/script/download.php" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/imagemagick" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://imagemagick.org/script/download.php" >}}
 
 ## What it does
 

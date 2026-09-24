@@ -6,7 +6,7 @@ description: "Open-source AirDrop alternative over the local network."
 
 {{< lead >}}Sends files between any two devices on the same network, whatever operating systems they run.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/localsend" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://localsend.org/download" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/localsend" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://localsend.org/download" >}}
 
 ## What it does
 

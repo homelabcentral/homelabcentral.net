@@ -6,7 +6,7 @@ description: "Touch ID for sudo inside tmux and screen."
 
 {{< lead >}}Reattaches a PAM session to the GUI session so Touch ID works in a multiplexer.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/pam-reattach" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/pam-reattach" >}}
 
 ## What it does
 

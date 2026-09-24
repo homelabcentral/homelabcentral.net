@@ -6,7 +6,7 @@ description: "Extra actions for Apple's Shortcuts app."
 
 {{< lead >}}Adds 130-plus actions Shortcuts does not ship, from custom UI to device and file operations.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1476205977" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1476205977" >}}
 
 ## What it does
 

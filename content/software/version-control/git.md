@@ -6,7 +6,7 @@ description: "Distributed version control."
 
 {{< lead >}}The version control system everything else on this page is a front end for.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/git" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/git" >}}
 
 ## What it does
 

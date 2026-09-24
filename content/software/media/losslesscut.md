@@ -6,7 +6,7 @@ description: "Trim and join video without re-encoding."
 
 {{< lead >}}Cuts and concatenates media by copying streams — instant, and no generation loss.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/losslesscut" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/mifi/lossless-cut/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/losslesscut" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/mifi/lossless-cut/releases" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Remount a read-only NTFS volume as writable."
 
 {{< lead >}}A menu bar helper that flips an NTFS drive from read-only to read-write.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/mounty" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://mounty.app/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/mounty" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://mounty.app/" >}}
 
 ## What it does
 

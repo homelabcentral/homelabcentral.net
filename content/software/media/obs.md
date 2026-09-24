@@ -6,7 +6,7 @@ description: "Live streaming and screen recording with scene compositing."
 
 {{< lead >}}Scene-based capture and streaming — the standard tool for recording a screen with overlays.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/obs" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://obsproject.com/download" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/obs" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://obsproject.com/download" >}}
 
 ## What it does
 

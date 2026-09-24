@@ -6,7 +6,7 @@ description: "Symlink farm manager — the classic dotfiles approach."
 
 {{< lead >}}Keeps dotfiles in one Git repository and symlinks them into place, one package at a time.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/stow" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/stow" >}}
 
 ## What it does
 

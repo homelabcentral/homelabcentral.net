@@ -6,7 +6,7 @@ description: "Minimal conda installer defaulting to conda-forge."
 
 {{< lead >}}A small conda distribution that pulls packages from conda-forge instead of Anaconda's channel.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/miniforge" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/conda-forge/miniforge/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/miniforge" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/conda-forge/miniforge/releases" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Virtual machines on macOS, built on QEMU."
 
 {{< lead >}}Runs ARM guests at near-native speed through Apple's hypervisor, and x86 guests by emulation.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/utm" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/utm-virtual-machines/id1538878817" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://mac.getutm.app/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/utm" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/utm-virtual-machines/id1538878817" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://mac.getutm.app/" >}}
 
 ## What it does
 

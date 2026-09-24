@@ -6,7 +6,7 @@ description: "Voice, video and text chat."
 
 {{< lead >}}Where most self-hosting and homelab project communities actually answer questions.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/discord" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://discord.com/download" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/discord" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://discord.com/download" >}}
 
 ## What it does
 

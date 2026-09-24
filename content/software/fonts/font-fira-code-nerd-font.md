@@ -6,7 +6,7 @@ description: "Fira Code, patched with Nerd Font glyphs."
 
 {{< lead >}}The font that popularised programming ligatures, and still the most configurable of them.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/font-fira-code-nerd-font" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/ryanoasis/nerd-fonts/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/font-fira-code-nerd-font" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/ryanoasis/nerd-fonts/releases" >}}
 
 ## What it does
 

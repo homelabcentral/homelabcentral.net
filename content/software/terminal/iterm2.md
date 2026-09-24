@@ -6,7 +6,7 @@ description: "Terminal emulator with splits, search and profiles."
 
 {{< lead >}}The terminal emulator most of the rest of this category runs inside.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/iterm2" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://iterm2.com/downloads.html" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/iterm2" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://iterm2.com/downloads.html" >}}
 
 ## What it does
 

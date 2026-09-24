@@ -6,7 +6,7 @@ description: "Terminal-based AI coding agent."
 
 {{< lead >}}Claude as a command-line agent that reads, edits and runs code in a real working tree.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/claude-code" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://claude.com/product/claude-code" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/claude-code" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://claude.com/product/claude-code" >}}
 
 ## What it does
 

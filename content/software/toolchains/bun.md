@@ -6,7 +6,7 @@ description: "JavaScript runtime, bundler, transpiler and package manager."
 
 {{< lead >}}One binary that replaces Node, npm, a bundler and a test runner.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://github.com/oven-sh/homebrew-bun" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://github.com/oven-sh/homebrew-bun" >}}
 
 ## What it does
 

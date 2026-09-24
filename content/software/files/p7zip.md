@@ -6,7 +6,7 @@ description: "The 7z archiver on the command line."
 
 {{< lead >}}Creates and extracts 7z, with the best general-purpose compression ratio available.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/p7zip" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/p7zip" >}}
 
 ## What it does
 

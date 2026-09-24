@@ -6,7 +6,7 @@ description: "On-screen keystroke and mouse visualiser."
 
 {{< lead >}}Draws the keys you press as an overlay — for screencasts, streams and teaching.{{< /lead >}}
 
-{{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/mulaRahul/keyviz/releases" >}}
+{{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/mulaRahul/keyviz/releases" >}}
 
 ## What it does
 

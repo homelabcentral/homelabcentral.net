@@ -6,7 +6,7 @@ description: "Unpack anything with one command."
 
 {{< lead >}}A wrapper that works out which extractor an archive needs and calls it.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/unp" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/unp" >}}
 
 ## What it does
 

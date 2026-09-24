@@ -6,7 +6,7 @@ description: "Apple's IDE, SDKs, simulators and command-line tools."
 
 {{< lead >}}Apple's toolchain: without it nothing Swift, iOS or macOS builds at all.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id497799835" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://developer.apple.com/download/all/" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id497799835" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://developer.apple.com/download/all/" >}}
 
 ## What it does
 

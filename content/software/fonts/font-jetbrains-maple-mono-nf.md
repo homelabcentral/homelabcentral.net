@@ -6,7 +6,7 @@ description: "A hybrid of JetBrains Mono and Maple Mono, Nerd Font patched."
 
 {{< lead >}}JetBrains Mono's Latin letterforms with Maple Mono's rounder details and CJK coverage.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/font-jetbrains-maple-mono-nf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/font-jetbrains-maple-mono-nf" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases" >}}
 
 ## What it does
 

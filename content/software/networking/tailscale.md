@@ -6,7 +6,7 @@ description: "WireGuard mesh VPN for reaching your own machines."
 
 {{< lead >}}Puts every device on a private network that works from anywhere, without port forwarding.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/tailscale-app" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/tailscale/id1475387142" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://tailscale.com/download/mac" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/tailscale-app" >}} {{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/tailscale/id1475387142" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://tailscale.com/download/mac" >}}
 
 ## What it does
 

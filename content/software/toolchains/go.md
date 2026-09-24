@@ -6,7 +6,7 @@ description: "Go compiler and module toolchain."
 
 {{< lead >}}The Go toolchain — also the dependency that makes Hugo Modules work.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/go" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://go.dev/dl/" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/go" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://go.dev/dl/" >}}
 
 ## What it does
 

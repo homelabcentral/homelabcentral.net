@@ -6,7 +6,7 @@ description: "Native macOS client for many database engines."
 
 {{< lead >}}One native window for PostgreSQL, MySQL, SQLite and the rest, instead of an Electron app per engine.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/tablepro" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://tablepro.app/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/tablepro" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://tablepro.app/" >}}
 
 ## What it does
 

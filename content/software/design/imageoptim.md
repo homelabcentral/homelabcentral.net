@@ -6,7 +6,7 @@ description: "Drag-and-drop lossless image compression."
 
 {{< lead >}}Strips metadata and recompresses PNG and JPEG files in place, without visible quality loss.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/imageoptim" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://imageoptim.com/mac" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/imageoptim" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://imageoptim.com/mac" >}}
 
 ## What it does
 

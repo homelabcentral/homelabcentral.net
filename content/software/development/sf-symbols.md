@@ -6,7 +6,7 @@ description: "Apple's system icon library and browser app."
 
 {{< lead >}}Apple's 6,000-plus icon set, with the app that lets you search, weight and export from it.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/sf-symbols" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://developer.apple.com/sf-symbols/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/sf-symbols" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://developer.apple.com/sf-symbols/" >}}
 
 ## What it does
 

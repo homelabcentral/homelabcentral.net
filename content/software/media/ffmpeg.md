@@ -6,7 +6,7 @@ description: "Decode, encode, transcode, mux, stream and filter anything."
 
 {{< lead >}}The library and CLI that nearly every other media tool calls underneath.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/ffmpeg-full" >}} {{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/ffmpeg" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://ffmpeg.org/download.html" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/ffmpeg-full" >}} {{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/ffmpeg" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://ffmpeg.org/download.html" >}}
 
 ## What it does
 

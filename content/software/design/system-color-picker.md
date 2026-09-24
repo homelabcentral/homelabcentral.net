@@ -6,7 +6,7 @@ description: "Pick, convert and store colours from anywhere on screen."
 
 {{< lead >}}Sindre Sorhus's colour picker: sample any pixel, get the value in every notation you need.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1545870783" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1545870783" >}}
 
 ## What it does
 

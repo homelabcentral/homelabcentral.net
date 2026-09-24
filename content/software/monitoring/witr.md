@@ -6,7 +6,7 @@ description: "Explain what a running process actually is."
 
 {{< lead >}}"Why is this running?" — looks up an unfamiliar process and tells you what it belongs to.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/witr" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://github.com/pranshuparmar/witr/releases" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/witr" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://github.com/pranshuparmar/witr/releases" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Chromium-based browser with blocking built in."
 
 {{< lead >}}Chromium with ad and tracker blocking in the browser rather than an extension.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/brave-browser" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://brave.com/download/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/brave-browser" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://brave.com/download/" >}}
 
 ## What it does
 

@@ -6,7 +6,7 @@ description: "Microsoft's RDP client — remote Windows desktops and Cloud PCs."
 
 {{< lead >}}Remote Desktop into Windows machines, Azure Virtual Desktop and Windows 365.{{< /lead >}}
 
-{{< badge content="Mac App Store" color="purple" icon="shopping-bag" link="https://apps.apple.com/us/app/id1295203466" >}}
+{{< badge content="Mac App Store" color="purple" icon="shopping-bag" size="lg" link="https://apps.apple.com/us/app/id1295203466" >}}
 
 ## What it does
 

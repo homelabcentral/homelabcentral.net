@@ -6,7 +6,7 @@ description: "General-purpose command-line fuzzy finder."
 
 {{< lead >}}Reads lines on stdin, lets you fuzzy-select interactively, writes the choice to stdout.{{< /lead >}}
 
-{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/formula/fzf" >}}
+{{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/fzf" >}}
 
 ## What it does
 

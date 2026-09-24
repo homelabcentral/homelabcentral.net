@@ -6,7 +6,7 @@ description: "Deep keyboard customisation at the driver level."
 
 {{< lead >}}Remaps any key to any key, builds layers, and applies different rules per keyboard.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/karabiner-elements" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://karabiner-elements.pqrs.org/" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/karabiner-elements" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://karabiner-elements.pqrs.org/" >}}
 
 ## What it does
 

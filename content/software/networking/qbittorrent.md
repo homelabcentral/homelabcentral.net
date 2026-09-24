@@ -6,7 +6,7 @@ description: "Open-source BitTorrent client with a web UI."
 
 {{< lead >}}An ad-free torrent client that can be driven entirely from a browser.{{< /lead >}}
 
-{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" link="https://formulae.brew.sh/cask/qbittorrent" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" link="https://www.qbittorrent.org/download" >}}
+{{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/qbittorrent" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.qbittorrent.org/download" >}}
 
 ## What it does
 
