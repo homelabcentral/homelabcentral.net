@@ -1,6 +1,6 @@
 ---
 title: "SF Symbols"
-weight: 7
+weight: 8
 description: "Apple's system icon library and browser app."
 ---
 

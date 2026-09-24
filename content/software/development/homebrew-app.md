@@ -1,6 +1,6 @@
 ---
 title: "Homebrew (BrewUI)"
-weight: 10
+weight: 11
 description: "Homebrew's official GUI."
 ---
 

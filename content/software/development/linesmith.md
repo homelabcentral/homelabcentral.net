@@ -1,6 +1,6 @@
 ---
 title: "LineSmith for Xcode"
-weight: 8
+weight: 9
 description: "Xcode source editor extension for line editing."
 ---
 

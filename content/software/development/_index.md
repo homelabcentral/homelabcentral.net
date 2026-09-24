@@ -13,6 +13,7 @@ description: "Editors, AI coding agents, and the clients that sit open beside th
 {{< card link="claude-code" title="Claude Code" icon="terminal" subtitle="Terminal-based AI coding agent." >}}
 {{< card link="bruno" title="Bruno" icon="paper-airplane" subtitle="Offline, file-based API client — GUI and CLI." >}}
 {{< card link="tablepro" title="TablePro" icon="database" subtitle="Native macOS client for many database engines." >}}
+{{< card link="dbx" title="DBX" icon="server" subtitle="Open source client for 90+ engines, with AI and MCP." >}}
 {{< card link="sf-symbols" title="SF Symbols" icon="color-swatch" subtitle="Apple's system icon library and browser app." >}}
 {{< card link="linesmith" title="LineSmith for Xcode" icon="pencil-alt" subtitle="Xcode source editor extension for line editing." >}}
 {{< card link="tabifyindents" title="TabifyIndents for Xcode" icon="menu-alt-2" subtitle="Convert leading spaces to tabs and back, inside Xcode." >}}

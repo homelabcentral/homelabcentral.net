@@ -1,6 +1,6 @@
 ---
 title: "TabifyIndents for Xcode"
-weight: 9
+weight: 10
 description: "Convert leading spaces to tabs and back, inside Xcode."
 ---
 
