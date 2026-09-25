@@ -1,6 +1,6 @@
 ---
 title: "LosslessCut"
-weight: 7
+weight: 12
 description: "Trim and join video without re-encoding."
 ---
 

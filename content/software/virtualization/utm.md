@@ -28,7 +28,7 @@ For lab work it is the fastest way to try a distribution, test an installer, or 
 {{< borderless-table >}}
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
-| [Parallels Desktop](https://www.parallels.com/products/desktop/) | Paid | Still the smoothest Windows-on-Mac experience |
+| [Parallels Desktop](/software/virtualization/parallels/) | Paid | Still the smoothest Windows-on-Mac experience |
 | [VMware Fusion](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) | Freemium | Free for personal use, more traditional VM management |
 | [Lima](https://lima-vm.io/) or [Tart](https://tart.run/) | Open source | CLI-first Linux and macOS VMs, aimed at CI and automation |
 | [Docker](/software/toolchains/docker-desktop/) or [OrbStack](https://orbstack.dev/) | Freemium | Lighter, if a container would do instead of a full VM |

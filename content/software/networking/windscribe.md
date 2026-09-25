@@ -1,6 +1,6 @@
 ---
 title: "Windscribe"
-weight: 2
+weight: 4
 description: "Commercial VPN for privacy and region changes."
 ---
 
@@ -25,9 +25,10 @@ A VPN provider is a party you are choosing to trust with the traffic your ISP wo
 {{< borderless-table >}}
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
-| [Mullvad](https://mullvad.net/) | Freemium | No account, cash accepted, the strongest privacy reputation of the group |
-| [Proton VPN](https://protonvpn.com/) | Freemium | Audited, with a usable free tier |
-| [IVPN](https://www.ivpn.net/) | Freemium | Small, audited, transparent about ownership |
+| [Mullvad](/software/networking/mullvad/) | Subscription | No account, cash accepted, the strongest privacy reputation of the group |
+| [Proton VPN](/software/networking/proton-vpn/) | Freemium | Audited, with a larger free tier than this one |
+| [NordVPN](/software/networking/nordvpn/), [Surfshark](/software/networking/surfshark/) and [ExpressVPN](/software/networking/expressvpn/) | Subscription | Bigger networks and bigger marketing budgets |
+| [IVPN](https://www.ivpn.net/) | Subscription | Small, audited, transparent about ownership |
 | Your own [WireGuard](https://www.wireguard.com/) server | Open source | Private by construction, but the exit IP is traceable to you |
 {{< /borderless-table >}}
 

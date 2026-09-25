@@ -4,7 +4,7 @@ weight: 8
 description: "Apple's system icon library and browser app."
 ---
 
-{{< lead >}}Apple's 6,000-plus icon set, with the app that lets you search, weight and export from it.{{< /lead >}}
+{{< lead >}}Apple's 6,000-plus icon set, with the app that lets you search, weight and export from it. They ship on every Apple device, so reach for a symbol before going looking for an SVG.{{< /lead >}}
 
 {{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/sf-symbols" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://developer.apple.com/sf-symbols/" >}}
 

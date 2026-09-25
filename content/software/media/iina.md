@@ -1,6 +1,6 @@
 ---
 title: "IINA"
-weight: 11
+weight: 16
 description: "Modern open-source media player for macOS."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "CrystalFetch"
-weight: 2
+weight: 3
 description: "Build a Windows installer ISO on macOS."
 ---
 

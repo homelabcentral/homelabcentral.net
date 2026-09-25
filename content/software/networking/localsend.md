@@ -1,6 +1,6 @@
 ---
 title: "LocalSend"
-weight: 3
+weight: 8
 description: "Open-source AirDrop alternative over the local network."
 ---
 

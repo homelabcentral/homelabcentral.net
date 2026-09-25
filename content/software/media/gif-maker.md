@@ -1,6 +1,6 @@
 ---
 title: "GIF Maker, GIF Editor"
-weight: 14
+weight: 19
 description: "Make and edit GIFs on macOS."
 ---
 
@@ -28,10 +28,10 @@ ffmpeg -i in.mp4 -i palette.png -lavfi "fps=15,scale=800:-1:flags=lanczos[x];[x]
 {{< borderless-table >}}
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
-| [Gifski](https://gif.ski/) | Open source | Produces noticeably better GIFs |
+| [Gifski](/software/media/gifski/) | Open source | Produces noticeably better GIFs |
 | ffmpeg with `palettegen` | Open source | The best quality available, and scriptable |
 | [ezgif.com](https://ezgif.com/) | Free | No install, fine for one-off edits |
-| [CleanShot X](https://cleanshot.com/) | Paid | Records straight to GIF |
+| [CleanShot X](/software/media/cleanshot-x/) | Paid | Records straight to GIF |
 {{< /borderless-table >}}
 
 ## Install

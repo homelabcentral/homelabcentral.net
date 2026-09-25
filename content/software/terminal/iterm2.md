@@ -18,6 +18,36 @@ iTerm2 replaces Apple's Terminal with the features a heavy terminal user eventua
 - **Appearance → Panes** — dim inactive splits, which makes a four-pane layout readable.
 - A Nerd Font (see the [Fonts](/software/fonts/) section) so Starship and `lsd` glyphs render.
 
+## A profile to start from
+
+A ready-made profile, if you would rather not set the font and colours by hand: **JetBrains Mono Nerd Font Mono** at 14pt with a Symbols Nerd Font fallback, powerline glyphs drawn by iTerm2 rather than the font, separate colour sets for light and dark mode, a 125×35 window and ligatures off.
+
+{{< cards cols="2" >}}
+{{< card link="/downloads/iterm2-jetbrains-mono-nf.json" title="iterm2-jetbrains-mono-nf.json" icon="download" subtitle="iTerm2 profile — JetBrains Mono NF" >}}
+{{< /cards >}}
+
+{{% steps %}}
+
+### Install the fonts first
+
+```shell
+brew install --cask font-jetbrains-mono-nerd-font font-symbols-only-nerd-font
+```
+
+A profile referencing a font that is not installed falls back silently, and the glyphs come out as boxes.
+
+### Import it
+
+**Settings → Profiles → Other Actions… → Import JSON Profiles**, then pick the downloaded file.
+
+### Make it the default
+
+Select **JetBrains Mono NF** in the profile list and **Other Actions… → Set as Default**.
+
+{{% /steps %}}
+
+Ligatures are off deliberately — `Nerd Font Mono` forces every glyph to one cell, and that is what keeps a prompt and a `lsd` listing aligned. Turn them on under **Profiles → Text** if you want them.
+
 ## Notes
 
 The app updates itself; Homebrew's version will lag.

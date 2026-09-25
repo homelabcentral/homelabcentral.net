@@ -4,7 +4,7 @@ weight: 5
 description: "Offline, file-based API client — GUI and CLI."
 ---
 
-{{< lead >}}An API client that stores collections as plain files in your repository instead of in someone's cloud.{{< /lead >}}
+{{< lead >}}An API client that stores collections as plain files in your repository instead of in someone's cloud, for exercising an API while you build it.{{< /lead >}}
 
 {{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/bruno" >}} {{< badge content="Homebrew formula" color="green" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/formula/bruno-cli" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://www.usebruno.com/downloads" >}}
 

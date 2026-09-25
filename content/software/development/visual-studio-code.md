@@ -10,13 +10,23 @@ description: "Primary code editor, extension-driven."
 
 ## What it does
 
-VS Code is an Electron-based editor that sits between a plain text editor and a full IDE. Out of the box it gives syntax highlighting, fuzzy file navigation, integrated terminal, Git gutter and staging UI, and a debugger protocol (DAP) that language extensions plug into.
+VS Code is an Electron-based editor that sits between a plain text editor and a full IDE. Out of the box it gives syntax highlighting, fuzzy file navigation, integrated terminal, Git gutter and staging UI, and a debugger protocol (DAP) that language extensions plug into. What it is not is a full JetBrains IDE — the deep refactoring and static analysis those ship with come from extensions here, if at all.
+
+Two remote features matter more than the editing. **Dev containers** put the whole environment inside Docker, so the toolchain is defined by the repository rather than by the machine. **Remote - SSH** runs the editor's backend on another host and leaves only the UI local, which is how a laptop edits on a machine with far more compute — over [Tailscale](/software/networking/tailscale/), from anywhere. The two combine: a dev container on the remote host works exactly as it does locally.
 
 Most of its capability arrives through extensions rather than the core app — language servers for Go, Python, Swift or Hugo templates, linters, formatters, remote development over SSH, and dev container support that reuses the same `.devcontainer/` definition Docker uses.
 
 ## Why it is usually the first install
 
 It is the lowest-commitment editor that scales: good enough to open a single file in, capable enough to stay in for a full project, and with an extension for practically every language and framework. Workspace settings, snippets and recommended extensions live in a `.vscode/` directory inside the project, so a repository can carry its own editor configuration for anyone who clones it.
+
+## Configuration
+
+Everything is a JSON file, at one of several scopes. User settings apply everywhere; workspace settings live in `.vscode/settings.json` inside the project and override them; a dev container adds its own on top. The same split applies to snippets — global ones sit in the user profile, project ones in `.vscode/*.code-snippets`, which is how a repository ships boilerplate to everyone who clones it.
+
+**Settings Sync** carries settings, keybindings, snippets, themes and the extension list between machines through a GitHub or Microsoft account. It is off until turned on, from the gear menu.
+
+Themes are extensions like any other and sync with the rest — One Dark Pro's Monokai Darker variant is a reasonable place to start. Extensions can also be pinned per environment: `devcontainer.json` lists the ones its container installs, so a container is reproducible without touching the local profile.
 
 ## Notes
 

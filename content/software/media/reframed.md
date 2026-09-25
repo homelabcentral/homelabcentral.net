@@ -24,9 +24,9 @@ That is the shape of tool that makes short product or documentation clips cheap 
 {{< borderless-table >}}
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
-| [Screen Studio](https://screen.studio/) | Paid | The app that defined this category of auto-zooming recorder |
-| [CleanShot X](https://cleanshot.com/) | Paid | Best-in-class screenshots with competent recording |
-| [Cap](https://cap.so/) | Freemium | A similar editor and a cloud tier |
+| [Screen Studio](/software/media/screen-studio/) | Paid | The app that defined this category of auto-zooming recorder |
+| [CleanShot X](/software/media/cleanshot-x/) | Paid | Best-in-class screenshots with competent recording |
+| [Cap](/software/media/cap/) | Freemium | A similar editor and a cloud tier |
 | [ScreenFlow](https://www.telestream.net/screenflow/) | Paid | Heavier, a full editor rather than a recorder with trimming |
 {{< /borderless-table >}}
 

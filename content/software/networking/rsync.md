@@ -1,6 +1,6 @@
 ---
 title: "rsync"
-weight: 5
+weight: 10
 description: "Fast incremental file transfer and synchronisation."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Windows App"
-weight: 4
+weight: 9
 description: "Microsoft's RDP client — remote Windows desktops and Cloud PCs."
 ---
 
@@ -26,7 +26,7 @@ For a homelab that means a Windows VM — under UTM locally, or on a box in the 
 | --- | --- | --- |
 | [Jump Desktop](https://jumpdesktop.com/) | Paid | Generally the better RDP and VNC client on macOS |
 | [FreeRDP](https://www.freerdp.com/) | Open source | Command-line, scriptable |
-| [Parallels Desktop](https://www.parallels.com/products/desktop/) | Paid | Runs Windows locally instead of connecting to it |
+| [Parallels Desktop](/software/virtualization/parallels/) | Paid | Runs Windows locally instead of connecting to it |
 | [Screen Sharing / VNC](https://support.apple.com/guide/mac-help/mh14066/mac) | Built in | For macOS and Linux hosts rather than Windows |
 | [AnyDesk](https://anydesk.com/) or [TeamViewer](https://www.teamviewer.com/) | Freemium | When you cannot reach the host's network at all |
 {{< /borderless-table >}}

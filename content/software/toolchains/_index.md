@@ -4,7 +4,7 @@ weight: 2
 description: "Language toolchains, package managers, containers and the tools that build and check a project."
 ---
 
-{{< lead >}}What compiles, runs, packages and checks the code — installed once, then mostly forgotten about.{{< /lead >}}
+{{< lead >}}What compiles, runs, packages and checks the code — installed once, then mostly forgotten about. Add the other language toolchains as something needs them.{{< /lead >}}
 
 Half of this is installed because something else needs it: Maven wants a JDK, Hugo Modules resolve through the Go tool, a dev container needs Docker.
 

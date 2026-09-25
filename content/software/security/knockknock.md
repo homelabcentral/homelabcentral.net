@@ -1,6 +1,6 @@
 ---
 title: "KnockKnock"
-weight: 2
+weight: 3
 description: "Show everything persistently installed on the Mac."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "VLC"
-weight: 12
+weight: 17
 description: "Plays nearly anything, from nearly anywhere."
 ---
 

@@ -30,7 +30,7 @@ Casts can be self-hosted with the `asciinema-player` JavaScript component, or up
 | --- | --- | --- |
 | [VHS](https://github.com/charmbracelet/vhs) | Open source | Charm's tool: scripted, deterministic recordings that produce GIFs |
 | [t-rec](https://github.com/sassman/t-rec-rs) and [terminalizer](https://github.com/faressoft/terminalizer) | Open source | Record to GIF directly, larger files |
-| [Gifski](https://gif.ski/) plus a screen recording | Open source | The brute-force route, and it looks fine |
+| [Gifski](/software/media/gifski/) plus a screen recording | Open source | The brute-force route, and it looks fine |
 | `script(1)` | Built in | Captures the text without timing, already installed |
 {{< /borderless-table >}}
 

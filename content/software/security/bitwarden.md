@@ -26,7 +26,7 @@ For a homelab the significant part is that the server is open source and self-ho
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
 | [1Password](https://1password.com/) | Freemium | The most polished of the group on Apple platforms |
-| [Apple Passwords](https://support.apple.com/en-us/120758) | Built in | Passkey support and family sharing |
+| [Passwords and Keychain Access](/software/security/apple-passwords/) | Built in | Already there, syncs through iCloud, and never leaves Apple's platforms |
 | [KeePassXC](https://keepassxc.org/) | Open source | A local database file, no sync service at all |
 | [Proton Pass](https://proton.me/pass) | Freemium | Audited, bundled with Proton's other services |
 | [pass](https://www.passwordstore.org/) | Open source | GPG files in a Git repository, for people who want exactly that |

@@ -1,6 +1,6 @@
 ---
 title: "Ryujinx"
-weight: 3
+weight: 7
 description: "Nintendo Switch emulator written in C#."
 ---
 
@@ -29,7 +29,7 @@ Emulation itself is lawful in most jurisdictions. What is not is obtaining the c
 | --- | --- | --- |
 | [Ryubing](https://git.ryujinx.app/projects/Ryubing) and [Kenji-NX](https://kenji-nx.org/) | Open source | The maintained forks of this codebase |
 | [Eden](https://eden-emu.dev/) | Open source | A separate continuation of the emulation effort |
-| [Dolphin](https://dolphin-emu.org/) | Open source | GameCube and Wii, mature, and legally unambiguous |
+| [Dolphin](/software/virtualization/dolphin/) | Open source | GameCube and Wii, mature, and legally unambiguous |
 | A Nintendo Switch | Paid | The alternative that nobody lists and everybody should consider |
 {{< /borderless-table >}}
 

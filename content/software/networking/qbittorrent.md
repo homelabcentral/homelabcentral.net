@@ -1,6 +1,6 @@
 ---
 title: "qBittorrent"
-weight: 6
+weight: 11
 description: "Open-source BitTorrent client with a web UI."
 ---
 
@@ -23,10 +23,10 @@ qBittorrent is a full-featured, open-source BitTorrent client: sequential downlo
 {{< borderless-table >}}
 | Alternative | Type | Trade-off |
 | --- | --- | --- |
-| [Transmission](https://transmissionbt.com/) | Open source | Lighter and more Mac-native, fewer options |
-| [Deluge](https://deluge-torrent.org/) | Open source | Daemon plus thin client, good for headless setups |
+| [Transmission](/software/networking/transmission/) | Open source | Lighter and more Mac-native, fewer options |
+| [Deluge](/software/networking/deluge/) | Open source | Daemon plus thin client, good for headless setups |
 | [rTorrent with ruTorrent](https://github.com/rakshasa/rtorrent) | Open source | The traditional seedbox pairing |
-| [WebTorrent Desktop](https://webtorrent.io/desktop/) | Open source | For streaming rather than collecting |
+| [WebTorrent Desktop](/software/networking/webtorrent-desktop/) | Open source | For streaming rather than collecting |
 {{< /borderless-table >}}
 
 ## Install

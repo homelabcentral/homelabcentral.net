@@ -1,6 +1,6 @@
 ---
 title: "Video DownloadHelper CoApp"
-weight: 10
+weight: 15
 description: "Native companion for the Video DownloadHelper browser extension."
 ---
 

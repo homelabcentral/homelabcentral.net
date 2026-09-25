@@ -4,7 +4,7 @@ weight: 2
 description: "Per-device mouse and trackpad behaviour."
 ---
 
-{{< lead >}}Disables mouse acceleration, reverses scrolling per device, and remaps buttons.{{< /lead >}}
+{{< lead >}}Gives a mouse its own settings, separate from the trackpad — including the scroll direction macOS otherwise insists on applying to both.{{< /lead >}}
 
 {{< badge content="Homebrew cask" color="blue" icon="iconify:devicon-plain/homebrew" size="lg" link="https://formulae.brew.sh/cask/linearmouse" >}} {{< badge content="Direct download" color="orange" icon="iconify:charm/download" size="lg" link="https://linearmouse.org/" >}}
 

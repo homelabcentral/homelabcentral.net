@@ -1,6 +1,6 @@
 ---
 title: "Plex"
-weight: 13
+weight: 18
 description: "Media server and client for a home library."
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "Fonts"
 weight: 17
-description: "Monospaced coding fonts, Nerd Font patched."
+description: "Monospaced coding fonts, mostly Nerd Font patched."
 ---
 
-{{< lead >}}Five monospaced families, all patched with the icon glyphs that terminal tools assume are present.{{< /lead >}}
+{{< lead >}}Ten monospaced families, and the glyph set that makes the unpatched ones usable in a terminal.{{< /lead >}}
 
-Every family below is a **Nerd Font** build: the original typeface plus several thousand glyphs from Font Awesome, Devicons, Octicons and Material. Starship, `lsd`, `superfile` and `btop` all draw those glyphs, and without a patched font they render as empty boxes.
+Most of the list is a **Nerd Font** build: the original typeface plus several thousand glyphs from Font Awesome, Devicons, Octicons and Material. Starship, `lsd`, `superfile` and `btop` all draw those glyphs, and without them they render as empty boxes. Two families here have no patched build — pair those with [Symbols Nerd Font](/software/fonts/font-symbols-only-nerd-font/) as a fallback and the icons resolve anyway.
 
 {{< cards cols="3" >}}
 {{< card link="font-jetbrains-mono-nerd-font" title="JetBrains Mono Nerd Font" icon="code" subtitle="JetBrains Mono, patched with Nerd Font glyphs." >}}
@@ -14,7 +14,26 @@ Every family below is a **Nerd Font** build: the original typeface plus several 
 {{< card link="font-maple-mono-nf" title="Maple Mono NF" icon="code" subtitle="Maple Mono, rounded, with Nerd Font glyphs." >}}
 {{< card link="font-jetbrains-maple-mono-nf" title="JetBrains Maple Mono NF" icon="code" subtitle="A hybrid of JetBrains Mono and Maple Mono, Nerd Font patched." >}}
 {{< card link="font-space-mono-nerd-font" title="Space Mono Nerd Font" icon="code" subtitle="Space Mono, patched with Nerd Font glyphs." >}}
+{{< card link="font-blex-mono-nerd-font" title="IBM Plex Mono Nerd Font" icon="code" subtitle="IBM Plex Mono, patched with Nerd Font glyphs." >}}
+{{< card link="font-meslo-lg-nerd-font" title="Meslo LG Nerd Font" icon="code" subtitle="Menlo with adjustable line gap, Nerd Font patched." >}}
+{{< card link="font-sauce-code-pro-nerd-font" title="Source Code Pro Nerd Font" icon="code" subtitle="Adobe's Source Code Pro, patched with Nerd Font glyphs." >}}
+{{< card link="font-google-sans-code" title="Google Sans Code" icon="code" subtitle="Google's monospace, for code and prose together." >}}
+{{< card link="font-monolisa" title="MonoLisa" icon="code" subtitle="Paid coding typeface, drawn rather than adapted." >}}
+{{< card link="font-symbols-only-nerd-font" title="Symbols Nerd Font" icon="sparkles" subtitle="The icon glyphs alone, as a fallback for unpatched families." >}}
 {{< /cards >}}
+
+## Ligatures, or not
+
+Half this list has programming ligatures and half deliberately does not, which is the first thing to decide.
+
+{{< borderless-table >}}
+| Ligatures | Families |
+| --- | --- |
+| Yes | JetBrains Mono, Fira Code, Maple Mono, JetBrains Maple Mono, MonoLisa |
+| No | IBM Plex Mono, Meslo LG, Source Code Pro, Google Sans Code, Space Mono |
+{{< /borderless-table >}}
+
+A ligature draws `!=` as a single crossed-out equals sign. It reads well, and it also means the glyph on screen no longer corresponds one-to-one with the characters in the file — which is fine until you are counting columns, or reading a language where `<-` and `< -` differ. Both positions are defensible; the families in the second row simply never offer the choice.
 
 ## Where these come from
 

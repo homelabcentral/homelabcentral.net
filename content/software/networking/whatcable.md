@@ -1,6 +1,6 @@
 ---
 title: "WhatCable"
-weight: 7
+weight: 15
 description: "Menu bar USB-C cable and port diagnostics."
 ---
 
