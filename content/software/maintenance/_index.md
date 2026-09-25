@@ -19,4 +19,5 @@ macOS hides both of the things this category is about: what is actually consumin
 {{< card link="cleanmykeyboard" title="CleanMyKeyboard" icon="lock-closed" subtitle="Disable the keyboard so you can wipe it." >}}
 {{< card link="mist" title="Mist" icon="cloud-download" subtitle="Download macOS installers and firmwares." >}}
 {{< card link="balenaetcher" title="balenaEtcher" icon="save-as" subtitle="Flash OS images to SD cards and USB drives." >}}
+{{< card link="macusb" title="macUSB" icon="save" subtitle="Bootable USB creator for macOS, Windows and Linux." >}}
 {{< /cards >}}
