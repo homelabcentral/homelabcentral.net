@@ -29,7 +29,7 @@ Any external disk works. Erase it as **APFS** in Disk Utility if it is only ever
 Options worth changing once:
 
 - **Back up frequency** — hourly by default, and every 24 hours or manual are the other choices.
-- **Exclude** the directories you can rebuild: `~/Library/Caches`, VM images, a downloads folder full of installers, `node_modules` trees.
+- **Exclude** the directories you can rebuild — see below.
 
 ### Check it works
 
@@ -42,6 +42,66 @@ tmutil startbackup --block
 A destination that lists, a backup that dates from this hour, and a manual run that completes. Then restore one file from the Finder's **Enter Time Machine**, because a backup nobody has ever restored from is a hypothesis.
 
 {{% /steps %}}
+
+## Excluding directories
+
+Anything you can rebuild from a package manager or a `git clone` is worth keeping out: it costs backup space, slows every run, and restores something you did not want. macOS already skips caches, trash and temporary files through its own exclusion list, so this is about your own directories.
+
+{{% steps %}}
+
+### Add them in System Settings
+
+**System Settings → General → Time Machine → Options…**, then **+** and pick the folders. The list shows the total size of what you have excluded, which is a useful sanity check after adding a few.
+
+### Or add them from the command line
+
+```shell
+tmutil addexclusion ~/Code/project/node_modules
+tmutil addexclusion ~/Library/Developer/Xcode/DerivedData
+```
+
+That is a **sticky** exclusion: it attaches to the item, so it survives a move or a rename, and a copy of the directory inherits it.
+
+To exclude a path rather than an item — anything that ends up there is excluded, and the exclusion stays put when the current occupant is deleted:
+
+```shell
+sudo tmutil addexclusion -p /Users/you/VMs
+```
+
+{{< callout type="warning" >}}
+`-p` and `-v` both need root **and** Full Disk Access for the terminal you run them from. Without Full Disk Access the command exits without doing anything useful — grant it in **System Settings → Privacy & Security → Full Disk Access**.
+{{< /callout >}}
+
+### Confirm what is excluded
+
+```shell
+tmutil isexcluded ~/Library/Caches ~/Code/project/node_modules
+```
+
+Prints `[Excluded]` or `[Included]` against each path, which is the only way to be sure a rule landed on what you meant.
+
+### Undo one
+
+```shell
+tmutil removeexclusion ~/Code/project/node_modules
+sudo tmutil removeexclusion -p /Users/you/VMs
+```
+
+The flags have to match how the exclusion was added — removing a fixed-path rule without `-p` does nothing.
+
+{{% /steps %}}
+
+Worth excluding on most machines:
+
+| Path                                          | Why                                                                 |
+| --------------------------------------------- | ------------------------------------------------------------------- |
+| `node_modules`, `target`, `.venv`, `vendor`   | Reinstallable in one command, and enormous                          |
+| `~/Library/Developer/Xcode/DerivedData`       | Build output, regenerated on the next build                         |
+| `~/Library/Containers/com.docker.docker/Data` | A single multi-gigabyte disk image that changes constantly          |
+| VM disks — Parallels, UTM, VMware             | Same problem, larger, and backed up whole every time                |
+| `~/Downloads`                                 | Installers you already used, if you treat it as a scratch directory |
+
+A whole volume is a different verb: `sudo tmutil addexclusion -v /Volumes/Scratch`, which tracks it by filesystem UUID rather than by name or mount point.
 
 ## Backing up to a Linux server
 
