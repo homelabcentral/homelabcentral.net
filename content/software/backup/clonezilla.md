@@ -1,6 +1,6 @@
 ---
 title: "Clonezilla"
-weight: 8
+weight: 9
 description: "Bootable disk and partition imaging for the rest of the rack."
 ---
 

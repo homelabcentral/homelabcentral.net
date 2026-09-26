@@ -1,6 +1,6 @@
 ---
 title: "Kopia"
-weight: 6
+weight: 7
 description: "Snapshots with a desktop app and a policy engine."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Arq"
-weight: 3
+weight: 4
 description: "Versioned, encrypted backups to storage you already pay for."
 ---
 
@@ -28,7 +28,7 @@ The appeal over a subscription service is that the destination is yours. Cancel 
 | [restic](/software/backup/restic/)                                       | Open source  | Same model from the command line, free, no scheduler of its own      |
 | [Kopia](/software/backup/kopia/)                                         | Open source  | Comparable features with a GUI, less polished                        |
 | [Duplicati](https://www.duplicati.com/)                                  | Open source  | Free and cross-platform; slower, and the web UI is an acquired taste |
-| [Time Machine](https://support.apple.com/en-us/104984)                   | Built in     | Local and effortless, but not off-site                               |
+| [Time Machine](/software/backup/time-machine/)                           | Built in     | Local and effortless, but not off-site                               |
 {{< /borderless-table >}}
 
 ## Install

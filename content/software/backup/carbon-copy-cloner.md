@@ -1,6 +1,6 @@
 ---
 title: "Carbon Copy Cloner"
-weight: 1
+weight: 2
 description: "Scheduled clones and snapshots, with a bootable copy assistant."
 ---
 
@@ -29,7 +29,7 @@ This is why "bootable clone" stopped being the whole strategy on modern Macs. Ke
 {{< borderless-table >}}
 | Alternative                                                             | Type        | Trade-off                                                                    |
 | ----------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| [Time Machine](https://support.apple.com/en-us/104984)                  | Built in    | Already there and versioned, but no clone and little control over scheduling |
+| [Time Machine](/software/backup/time-machine/)                          | Built in    | Already there and versioned, but no clone and little control over scheduling |
 | [SuperDuper!](/software/backup/superduper/)                             | Freemium    | Narrower and cheaper; no snapshot retention                                  |
 | [ChronoSync](https://www.econtechnologies.com/chronosync/overview.html) | Paid        | Aimed at folder-level sync rules rather than whole volumes                   |
 | [Macrium Reflect](https://www.macrium.com/)                             | Paid        | The Windows equivalent; nothing to install on a Mac                          |

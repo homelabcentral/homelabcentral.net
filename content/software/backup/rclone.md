@@ -1,6 +1,6 @@
 ---
 title: "rclone"
-weight: 7
+weight: 8
 description: "Sync and encrypt to sixty-odd cloud providers."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "SuperDuper!"
-weight: 2
+weight: 3
 description: "Bootable copies, and Smart Update to keep them current."
 ---
 
@@ -25,7 +25,7 @@ Smart Update is the feature worth paying for: it compares both sides and copies 
 | Alternative                                                | Type        | Trade-off                                                            |
 | ---------------------------------------------------------- | ----------- | -------------------------------------------------------------------- |
 | [Carbon Copy Cloner](/software/backup/carbon-copy-cloner/) | Paid        | Snapshot retention, richer scheduling, no free tier                  |
-| [Time Machine](https://support.apple.com/en-us/104984)     | Built in    | Versioned history, but the result does not boot                      |
+| [Time Machine](/software/backup/time-machine/)             | Built in    | Versioned history, but the result does not boot                      |
 | `asr`                                                      | Built in    | The replication engine both of these drive, with no interface at all |
 | [Clonezilla](/software/backup/clonezilla/)                 | Open source | Images any disk from a USB stick, but not the running Mac            |
 {{< /borderless-table >}}

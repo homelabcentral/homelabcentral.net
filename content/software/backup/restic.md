@@ -1,6 +1,6 @@
 ---
 title: "restic"
-weight: 4
+weight: 5
 description: "Deduplicating encrypted snapshots from one binary."
 ---
 
@@ -31,13 +31,13 @@ restic restore latest --target /tmp/restore
 ## Alternative to
 
 {{< borderless-table >}}
-| Alternative                                            | Type        | Trade-off                                                        |
-| ------------------------------------------------------ | ----------- | ---------------------------------------------------------------- |
-| [BorgBackup](/software/backup/borgbackup/)             | Open source | Older and battle-tested, but needs Borg installed on the far end |
-| [Kopia](/software/backup/kopia/)                       | Open source | Same idea with a desktop app and policies; younger project       |
-| [Arq](/software/backup/arq/)                           | Paid        | A scheduler and a GUI, for people who do not want to write one   |
-| [Time Machine](https://support.apple.com/en-us/104984) | Built in    | Effortless locally, useless for off-site or for Linux hosts      |
-| [rclone](/software/backup/rclone/)                     | Open source | Mirrors files rather than versioning them                        |
+| Alternative                                    | Type        | Trade-off                                                        |
+| ---------------------------------------------- | ----------- | ---------------------------------------------------------------- |
+| [BorgBackup](/software/backup/borgbackup/)     | Open source | Older and battle-tested, but needs Borg installed on the far end |
+| [Kopia](/software/backup/kopia/)               | Open source | Same idea with a desktop app and policies; younger project       |
+| [Arq](/software/backup/arq/)                   | Paid        | A scheduler and a GUI, for people who do not want to write one   |
+| [Time Machine](/software/backup/time-machine/) | Built in    | Effortless locally, useless for off-site or for Linux hosts      |
+| [rclone](/software/backup/rclone/)             | Open source | Mirrors files rather than versioning them                        |
 {{< /borderless-table >}}
 
 ## Install

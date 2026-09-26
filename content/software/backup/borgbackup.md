@@ -1,6 +1,6 @@
 ---
 title: "BorgBackup"
-weight: 5
+weight: 6
 description: "Deduplicating archives, compressed and authenticated."
 ---
 

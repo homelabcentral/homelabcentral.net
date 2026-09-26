@@ -4,11 +4,12 @@ weight: 2
 description: "Bootable clones, versioned snapshots and disk images."
 ---
 
-{{< lead >}}Copying a Mac so that losing it costs you an afternoon rather than everything.{{< /lead >}}
+{{< lead >}}Bootable clones, versioned snapshots and disk images — so that losing a machine costs an afternoon instead of everything.{{< /lead >}}
 
-Two jobs that get confused for one: a clone you can start the machine from, and a versioned archive you can pull last Tuesday's file out of. Most setups want one of each.
+Two jobs that get confused for one: a copy you can start a machine from, and a versioned archive you can pull last Tuesday's file out of. Most setups want one of each.
 
 {{< cards cols="3" >}}
+{{< card link="time-machine" title="Time Machine" icon="clock" subtitle="Hourly versioned backups, including to a Linux server." >}}
 {{< card link="carbon-copy-cloner" title="Carbon Copy Cloner" icon="duplicate" subtitle="Scheduled clones and snapshots, with a bootable copy assistant." >}}
 {{< card link="superduper" title="SuperDuper!" icon="save" subtitle="Bootable copies, and Smart Update to keep them current." >}}
 {{< card link="arq" title="Arq" icon="cloud-upload" subtitle="Versioned, encrypted backups to storage you already pay for." >}}

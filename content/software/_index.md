@@ -16,7 +16,7 @@ cascade:
 ---
 
 {{< lead >}}
-macOS software worth installing — 184 tools across 20 categories.
+macOS software worth installing — 185 tools across 20 categories.
 {{< /lead >}}
 
 ## Before anything else
@@ -52,7 +52,7 @@ brew bundle install            # install everything a Brewfile lists
 
 {{< cards cols="3" >}}
 {{< card link="ai" title="AI & Local Models" icon="cube-transparent" subtitle="Local model runners and on-device speech tools." tag="3" tagColor="gray" >}}
-{{< card link="backup" title="Backup" icon="duplicate" subtitle="Bootable clones, versioned snapshots and disk images." tag="8" tagColor="gray" >}}
+{{< card link="backup" title="Backup" icon="duplicate" subtitle="Bootable clones, versioned snapshots and disk images." tag="9" tagColor="gray" >}}
 {{< card link="browsers" title="Browsers & Web" icon="globe-alt" subtitle="Three browsers, a content blocker, and a crawler for auditing sites." tag="5" tagColor="gray" >}}
 {{< card link="design" title="Design & Graphics" icon="color-swatch" subtitle="Vector editing, image optimisation and colour picking." tag="4" tagColor="gray" >}}
 {{< card link="development" title="Development & Coding" icon="code" subtitle="Editors, AI coding agents, and the clients that sit open beside them." tag="11" tagColor="gray" >}}
