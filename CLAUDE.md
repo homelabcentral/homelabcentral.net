@@ -152,6 +152,82 @@ there is a real cover image.
 file, not from front matter. Do not add a `lastmod` key to work around a date
 looking wrong — commit properly instead.
 
+### The software section
+
+`content/software/` is a second docs-style section: a category directory per
+grouping, each with an `_index.md` whose `cards` grid links to one page per
+piece of software. It is a general catalogue of macOS software worth
+installing — written for someone setting up a Mac, **not** an inventory of any
+particular machine. Do not add "installed here", "on this Mac" or
+repo-specific asides; if a fact only holds for one machine or one project, it
+does not belong on the page.
+
+**The rules in this file are not page content.** Everything below describes
+how to write the section; none of it gets restated on the pages themselves.
+No "this is a reference, not a list of things you must have", no "how to read
+this", no section explaining what the catalogue excludes and why. A reader
+came for the software. Category landing pages get a `lead` and at most two
+sentences of substance — not a justification for the category existing.
+
+Every page follows the same shape — a `lead`, a row of source `badge`s, what
+the software does, an **Alternative to** table of what people commonly use
+instead, an **Install** section with one `tab` per method (Homebrew first
+wherever a formula or cask exists), then a `Links` card grid.
+
+The badge row is a single line, one badge per packaged source, each carrying a
+`link`: a Homebrew badge points at `formulae.brew.sh/{cask,formula}/<token>`
+— or at the tap's repository, for the seven taps with no page there — an App
+Store badge at `apps.apple.com/us/app/id<id>`, and a direct-download badge at
+the vendor's download page. Software with both a cask and a formula gets both
+badges. The badge for the source the page is filed under comes first.
+
+Badge icons are `iconify:devicon-plain/homebrew` and `iconify:charm/download`.
+Both are fetched at build time, so the build needs network for them and a typo
+in either name fails it rather than rendering blank.
+
+Install routes that are not a place to download from — `cargo install`, an npm
+package, a Chrome menu path, an unpatched sibling font — get no badge and stay
+in the Install section only.
+
+Category cards carry no `tag`. The badges state distribution; repeating it on
+the card was noise.
+
+"Alternative to" is a `borderless-table` shortcode wrapping a three-column
+Markdown table — `| Alternative | Type | Trade-off |` — with three to six
+rows. It names the incumbent the software competes with rather than every
+project in the space, and each row's trade-off is one clause, sentence case.
+The trade-off must not restate the `Type` cell: "Paid, and the nicest client"
+becomes "The nicest client".
+
+`Type` is how the software is sold, from a closed vocabulary: **Open source**
+(free, source public), **Free** (free, proprietary), **Freemium** (free tier
+plus a paid tier that matters), **Paid** (one-off), **Subscription**
+(recurring only), **Built in** (ships with macOS or Xcode). A row naming
+several products joins their labels — `Open source / Freemium` — and a row
+that names no product at all takes an em dash. Do not invent a seventh label.
+
+A name that also has a page in this section must carry the same label there
+and in every table citing it, or the catalogue contradicts itself.
+
+Every name in the first column links: **to its own page in this section when
+it has one**, and to the project's homepage otherwise. Names with nowhere to
+point — shell commands, `System Settings → …` paths, phrases like "Doing
+nothing" — stay as plain text. A literal `|` inside a cell, even in a code
+span, ends the cell: escape it as `\|`.
+
+Where nothing comparable exists, say so as a row (`| Nothing | … |`) rather
+than dropping the section — a missing section should mean nobody has filled
+it in yet.
+
+Two rules the pages depend on. Cross-links between software pages are written
+**absolute** (`/software/input/amphetamine-enhancer/`) because a relative path
+resolves against the category directory, not the section. And version numbers
+are deliberately absent — `brew info` and the linked release pages are
+authoritative, and a hardcoded version is wrong within a week.
+
+Adding a category means giving its `_index.md` the next free `weight`; the
+sidebar and breadcrumbs come from the file tree, as everywhere else in Hextra.
+
 ## The Hextra skill
 
 The theme repo ships an agent skill covering authoring against Hextra -
@@ -230,10 +306,17 @@ the wrong key.
 
 Compose-based, in `.devcontainer/`. Two things it does that are easy to break:
 
-- Bind-mounts `~/.ssh` read-only, in long syntax. A mount *string*'s `readonly`
-  flag is silently dropped on the compose code path; `read_only: true` under
-  long syntax survives. The mount exists so ssh can read `~/.ssh/config` and
-  pick the right key out of the forwarded agent.
+- Mounts exactly one SSH key, not the host's `~/.ssh`. `${HOME}/.ssh/`
+  `${HOMELABCENTRAL_SSH_KEY:-homelabcentral}` and its `.pub` are bound
+  read-only to `~/.ssh/id_container`, and `.devcontainer/ssh-config` — named by
+  `IdentityFile` with `IdentitiesOnly yes` — is symlinked over `~/.ssh/config`
+  by `postCreateCommand`. The forwarded agent still does the signing; this only
+  narrows which identity is offered, and mounting the whole of `~/.ssh` is what
+  dragged every other one in. `~/.ssh` itself is a named volume so
+  `known_hosts` survives a rebuild. Long syntax, not a mount *string*: a
+  string's `readonly` flag is silently dropped on the compose code path, and
+  these are real private keys. The host no longer needs
+  `IgnoreUnknown UseKeychain` — its config is never parsed here.
 - Reads `GH_TOKEN` from `HOMELABCENTRAL_GH_TOKEN` on the host, exported from
   `~/.zshrc` behind a `VSCODE_RESOLVING_ENVIRONMENT` guard. The rename keeps the
   host's own `gh` credentials untouched.
