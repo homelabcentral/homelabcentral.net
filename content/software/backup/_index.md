@@ -1,6 +1,6 @@
 ---
 title: "Backup"
-weight: 18
+weight: 2
 description: "Bootable clones, versioned snapshots and disk images."
 ---
 

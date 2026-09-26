@@ -1,6 +1,6 @@
 ---
 title: "Browsers & Web"
-weight: 8
+weight: 3
 description: "Three browsers, a content blocker, and a crawler for auditing sites."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Terminal & Shell"
-weight: 3
+weight: 18
 description: "The terminal emulator, the shell around it, and the replacements for the stock Unix tools."
 ---
 

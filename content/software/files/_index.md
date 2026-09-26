@@ -1,6 +1,6 @@
 ---
 title: "Files, Archives & Filesystems"
-weight: 13
+weight: 7
 description: "Archivers, compression tools, NTFS support and cloud sync."
 ---
 

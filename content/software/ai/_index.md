@@ -1,6 +1,6 @@
 ---
 title: "AI & Local Models"
-weight: 5
+weight: 1
 description: "Local model runners and on-device speech tools."
 ---
 

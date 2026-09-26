@@ -1,6 +1,6 @@
 ---
 title: "Version Control"
-weight: 4
+weight: 19
 description: "Git itself, plus the CLI, TUI and surgery tools around it."
 ---
 

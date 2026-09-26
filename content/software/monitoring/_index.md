@@ -1,6 +1,6 @@
 ---
 title: "System Monitoring & Hardware"
-weight: 11
+weight: 17
 description: "Menu bar stats, process viewers, power and thermal monitoring, disk benchmarks and display control."
 ---
 

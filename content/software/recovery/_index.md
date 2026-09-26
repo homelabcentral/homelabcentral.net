@@ -1,6 +1,6 @@
 ---
 title: "Recovery"
-weight: 19
+weight: 14
 description: "Getting data back off a deleted volume or a failing disk."
 ---
 

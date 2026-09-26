@@ -1,6 +1,6 @@
 ---
 title: "Secure Erase"
-weight: 20
+weight: 15
 description: "Destroying data on a disk you are selling, returning or retiring."
 ---
 

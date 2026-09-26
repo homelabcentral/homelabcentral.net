@@ -1,6 +1,6 @@
 ---
 title: "Fonts"
-weight: 17
+weight: 8
 description: "Monospaced coding fonts, mostly Nerd Font patched."
 ---
 

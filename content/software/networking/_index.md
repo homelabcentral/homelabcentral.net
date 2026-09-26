@@ -1,6 +1,6 @@
 ---
 title: "Networking & Remote Access"
-weight: 9
+weight: 12
 description: "VPNs, mesh networking, remote desktops, file transfer, torrents and cable diagnostics."
 ---
 

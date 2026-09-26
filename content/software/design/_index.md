@@ -1,6 +1,6 @@
 ---
 title: "Design & Graphics"
-weight: 7
+weight: 4
 description: "Vector editing, image optimisation and colour picking."
 ---
 

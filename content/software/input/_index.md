@@ -1,6 +1,6 @@
 ---
 title: "Input, Window & Menu Bar"
-weight: 14
+weight: 9
 description: "Keyboard remapping, mouse behaviour, menu bar control and keep-awake."
 ---
 

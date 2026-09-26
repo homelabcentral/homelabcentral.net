@@ -1,6 +1,6 @@
 ---
 title: "Development & Coding"
-weight: 1
+weight: 5
 description: "Editors, AI coding agents, and the clients that sit open beside them."
 ---
 

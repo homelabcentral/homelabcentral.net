@@ -1,6 +1,6 @@
 ---
 title: "Disk, Cleanup & Maintenance"
-weight: 12
+weight: 6
 description: "Finding what filled the disk, uninstalling properly, and making installer media."
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Security & Privacy"
-weight: 15
+weight: 16
 description: "Password managers, the system keychain, and persistence auditing."
 ---
 

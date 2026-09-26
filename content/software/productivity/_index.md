@@ -1,6 +1,6 @@
 ---
 title: "Productivity & Documents"
-weight: 16
+weight: 13
 description: "PDFs, Markdown, chat, Shortcuts actions and package management from the command line."
 ---
 
