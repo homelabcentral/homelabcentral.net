@@ -16,7 +16,7 @@ cascade:
 ---
 
 {{< lead >}}
-macOS software worth installing — 166 tools across 17 categories.
+macOS software worth installing — 184 tools across 20 categories.
 {{< /lead >}}
 
 ## Before anything else
@@ -68,4 +68,7 @@ brew bundle install            # install everything a Brewfile lists
 {{< card link="security" title="Security & Privacy" icon="shield-check" subtitle="Password managers, the system keychain, and persistence auditing." tag="3" tagColor="gray" >}}
 {{< card link="productivity" title="Productivity & Documents" icon="document-text" subtitle="PDFs, Markdown, chat, Shortcuts actions and package management from the command line." tag="7" tagColor="gray" >}}
 {{< card link="fonts" title="Fonts" icon="translate" subtitle="Monospaced coding fonts, mostly Nerd Font patched." tag="11" tagColor="gray" >}}
+{{< card link="backup" title="Backup" icon="duplicate" subtitle="Bootable clones, versioned snapshots and disk images." tag="8" tagColor="gray" >}}
+{{< card link="recovery" title="Recovery" icon="search" subtitle="Getting data back off a deleted volume or a failing disk." tag="5" tagColor="gray" >}}
+{{< card link="erase" title="Secure Erase" icon="fire" subtitle="Destroying data on a disk you are selling, returning or retiring." tag="5" tagColor="gray" >}}
 {{< /cards >}}

@@ -37,12 +37,12 @@ macOS shipped an ancient rsync 2.6.9 for years, and now ships an `openrsync` shi
 ## Alternative to
 
 {{< borderless-table >}}
-| Alternative | Type | Trade-off |
-| --- | --- | --- |
-| [rclone](https://rclone.org/) | Open source | The same shape, for cloud storage instead of SSH hosts |
-| [Unison](https://github.com/bcpierce00/unison) | Open source | Genuinely bidirectional, which rsync is not |
-| [Syncthing](https://syncthing.net/) | Open source | Continuous and peer-to-peer, no scheduled runs |
-| [Carbon Copy Cloner](https://bombich.com/) or [Time Machine](https://support.apple.com/en-us/104984) | Paid / Built in | For Mac backups specifically, with snapshots |
+| Alternative                                                                                                          | Type            | Trade-off                                              |
+| -------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------ |
+| [rclone](/software/backup/rclone/)                                                                                   | Open source     | The same shape, for cloud storage instead of SSH hosts |
+| [Unison](https://github.com/bcpierce00/unison)                                                                       | Open source     | Genuinely bidirectional, which rsync is not            |
+| [Syncthing](https://syncthing.net/)                                                                                  | Open source     | Continuous and peer-to-peer, no scheduled runs         |
+| [Carbon Copy Cloner](/software/backup/carbon-copy-cloner/) or [Time Machine](https://support.apple.com/en-us/104984) | Paid / Built in | For Mac backups specifically, with snapshots           |
 {{< /borderless-table >}}
 
 ## Install
