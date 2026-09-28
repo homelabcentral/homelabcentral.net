@@ -60,6 +60,18 @@ jobs:
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
+      # Assets reach the site close to verbatim - static/ byte for byte, and
+      # assets/ as the original file alongside Hugo's derivatives - so the
+      # metadata an image or PDF was exported with is published with it. The
+      # publish workflow never runs make, so this cannot be a build step and
+      # still protect the live site; it protects it by being part of the
+      # required check. See the Assets section of the Makefile.
+      - name: Asset metadata and leak scan
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libimage-exiftool-perl
+          make check-assets
+
       # Same flags and base URL as the publish build, so a branch that passes
       # here cannot fail differently once merged.
       - name: Build

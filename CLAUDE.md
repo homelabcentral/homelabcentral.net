@@ -296,6 +296,33 @@ resolves via `resources.Get`, so its path is relative to `assets/`. The home
 hero image is a plain `src` and must live in `static/`, pre-sized — no
 processing happens.
 
+**Assets carry their export metadata.** `static/` is copied byte for byte, and
+Hextra publishes an image's original alongside Hugo's derivatives — so whatever
+an image or PDF was exported with is published with it. The home hero used to
+ship the Canva account, brand and document IDs it was made under. Assets are
+committed already stripped: after adding any asset, run `make strip-meta`.
+`make check-assets` is what the PR gate runs.
+
+The two passes split on content rather than extension — `grep -I` decides, so
+text goes to the leak scan and everything else to exiftool. That matters: an
+extension list left a `.heic` or a `.mov` in neither bucket, and it was counted
+clean without anything opening it. A file exiftool cannot identify now fails
+the check rather than passing it. And "carries metadata" means "a strip would
+change this file", asked by stripping a copy and diffing — not a list of
+forbidden tags, because a list drifts out of step with what the strip removes
+and silently caps it.
+
+That text scan deliberately skips `content/`. Its pages document commands, so
+`/Users/you/VMs` and `192.168.1.50` are the subject matter rather than a leak.
+Record an accepted hit in `.leakignore` with a reason rather than widening
+`LEAK_PATTERNS` in the Makefile.
+
+Exported config files carry identifiers no pattern can recognise.
+`static/downloads/iterm2-jetbrains-mono-nf.json` ships a nil-UUID `Guid`
+rather than the one it was exported with: iTerm2 refuses an import whose
+top-level dictionary has no `Guid` at all, but mints a fresh UUID when the
+one it is handed is already in use — so a placeholder imports cleanly.
+
 **Git identity.** This repo is owned by a different GitHub account than the host
 default. `user.name` and `user.email` are set repo-locally, and `origin` uses
 the `github-homelabcentral` SSH alias so pushes authenticate as the right
