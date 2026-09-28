@@ -104,9 +104,17 @@ dev: ## Serve on :8043 with live reload, drafts and future posts
 # Hugo builds the injected websocket URL from the baseURL, so stripping the port
 # leaves it empty and auto-refresh stops working. Acceptable here and not on
 # `dev` - this target is for inspecting output, not for editing against.
+# Blanking the GA4 ID keeps your own previews out of the analytics property.
+# Hextra emits gtag.js on `hugo.IsProduction`, which this target deliberately
+# sets - so without the override, browsing here is reported as real traffic.
+# It is an override, not a different environment: everything else stays exactly
+# as production, and the only difference in the output is the googletagmanager
+# preconnect and the two gtag scripts. `prod` is left alone, because its whole
+# job is to reproduce the CI build byte for byte.
 .PHONY: preview
-preview: ## Serve on :8043 as production: real baseURL, minified, no drafts
-	hugo server --environment production --minify \
+preview: ## Serve on :8043 as production: real baseURL, minified, no drafts, no analytics
+	HUGO_SERVICES_GOOGLEANALYTICS_ID="" \
+	  hugo server --environment production --minify \
 	  --baseURL "$(BASE_URL)" --appendPort=false \
 	  --port $(PORT) --bind 0.0.0.0
 
@@ -254,6 +262,224 @@ prod: ## Write public/ as CI does, at $(BASE_URL) (add CLEAN=1 to prune)
 .PHONY: clean
 clean: ## Remove build output
 	rm -rf public resources .hugo_build.lock
+
+##@ Assets
+
+# Everything under assets/ and static/ reaches the site close to verbatim:
+# static/ byte for byte, and assets/ as both Hugo's derivatives and - because
+# Hextra's render-image hook publishes the source alongside them - the original
+# file. Hugo's image pipeline drops metadata whenever it re-encodes, so the
+# derivatives are always clean and the originals never are. That asymmetry is
+# the hole these targets close, and it is why they read the source tree rather
+# than public/.
+#
+# Two different jobs live here. `strip-meta` deletes metadata containers, which
+# is mechanical and safe to automate. `check-leaks` reads text files, which have
+# no container to delete - what leaks there is content, and a hit wants a person
+# rather than a rewrite.
+#
+# Neither can be a build step. The publish is pages.yml running hugo directly
+# and it never invokes make, so a strip wired into `prod` would not reach the
+# live site - and `preview` is `hugo server`, which writes no public/ at all.
+# They protect the site by being a required check instead: build-check.yml runs
+# `check-assets` on every pull request.
+
+# Which files go to which pass is decided by content, not by extension. `grep
+# -I` classifies a file as binary the moment it sees a NUL, so the split is
+# exactly the one that matters: text goes to the leak scan, which can read it,
+# and everything else goes to exiftool, which knows the containers.
+#
+# Doing it by extension is what an earlier version did, and it meant a .heic
+# off a phone or a .mov matched neither list, fell through to the leak scan,
+# was skipped there for being binary, and was counted as clean without anything
+# ever having looked at it. An unrecognised file now goes to the pass that can
+# actually open it, and if exiftool cannot identify it either, check-meta says
+# so and fails rather than passing it silently.
+IS_TEXT = LC_ALL=C grep -qI . --
+
+# Everything exiftool can tell us about a file, minus what is not metadata:
+# ICC_Profile is a colour profile the strip deliberately keeps, System is the
+# filename and mtime, Composite and ExifTool are derived rather than stored.
+#
+# What remains still holds structural tags - a PNG's BitDepth, a JPEG's
+# ColorComponents, the cHRM chromaticities that survive a strip - so this is
+# not on its own a list of things to object to. check-meta decides by asking
+# whether a strip would change this output, which needs no such list and cannot
+# drift out of step with what strip-meta actually removes.
+META_READ = exiftool -q -q -s -G1 -all --ICC_Profile:all --System:all \
+	--Composite:all --ExifTool:all --
+
+# -overwrite_original rewrites in place rather than leaving an _original copy
+# beside every file. --icc_profile:all excludes the colour profile from the
+# wipe, because dropping an embedded profile changes how the image renders -
+# a visible regression rather than a privacy win.
+#
+# It protects the ICC profile and nothing else. PNG gAMA and sRGB chunks are
+# removed with everything else, and exiftool offers no exclusion that keeps
+# them - measured, not assumed. In practice that is harmless: a PNG with no
+# colour chunk is treated as sRGB, which is what a screenshot already is. It
+# would matter for a PNG deliberately authored at some other gamma, and none
+# of the assets here are.
+#
+# Neither flag touches pixel data: exiftool rewrites the container, so a
+# stripped JPEG keeps byte-identical scan data instead of being re-encoded.
+META_STRIP = exiftool -q -q -all= --icc_profile:all -overwrite_original --
+
+# Shapes that have no business in a file copied off a real machine: home
+# directories, addresses, RFC1918 hosts, key and token material, and the host
+# account names as a backstop for an export that embeds them somewhere the
+# other shapes miss.
+#
+# The address patterns are \b-anchored so that 210.0.0.5 is not read as the
+# 10.0.0.5 inside it. A four-part version number that happens to start with 10
+# still matches, which nothing short of understanding the file could fix -
+# that is what .leakignore is for.
+#
+# content/ is deliberately NOT scanned. Its pages document commands, so
+# /Users/you/VMs, you@personal.example and 192.168.1.50 are the subject matter
+# rather than a leak - 32 such lines today, every one of them intentional.
+LEAK_PATTERNS := /Users/[A-Za-z0-9._-]+|/home/[A-Za-z0-9._-]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|\b192\.168\.[0-9]{1,3}\.[0-9]{1,3}\b|\b10\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\b|\b172\.(1[6-9]|2[0-9]|3[01])\.[0-9]{1,3}\.[0-9]{1,3}\b|BEGIN [A-Z ]*PRIVATE KEY|ssh-(rsa|ed25519|dss) AAAA|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|\bsmit\b|\bchoksi\b
+
+# The same shapes, written as placeholders. Matched against the extracted token
+# rather than the whole line, so a real path on a line that also carries a
+# placeholder is still caught - which is why each one allows for the `NN:` line
+# number `grep -n -o` puts in front of it.
+#
+# noreply@ is tied to the domains it is expected at. Left open it would have
+# waved through noreply@ at a real employer, which is a name and a workplace.
+LEAK_ALLOW := ^[0-9]+:/Users/(you|user|username|me)$$|^[0-9]+:/home/(you|user|username|vscode|runner)$$|@([A-Za-z0-9.-]*\.)?example(\.(com|org|net))?$$|^[0-9]+:noreply@(users\.)?(github|noreply\.github)\.com$$
+
+# exiftool is not in the base devcontainer image or on a fresh Mac, and the
+# failure without it is a bare "command not found" from inside a loop.
+define NEED_EXIFTOOL
+	@command -v exiftool >/dev/null 2>&1 || { \
+	  $(ERR) "exiftool not found"; \
+	  printf "  %-14s %s\n" "" "macOS:  brew install exiftool"; \
+	  printf "  %-14s %s\n" "" "Debian: sudo apt-get install -y libimage-exiftool-perl"; \
+	  exit 1; \
+	}
+endef
+
+# Collect the file list up front rather than piping find into the loop. A
+# process substitution hands its exit status to nobody, so a find that failed -
+# or one run after assets/ was renamed - used to read as a successful scan of
+# nothing, and the target reported "0 file(s) clean" and passed. An empty list
+# is now a failure in its own right.
+define ASSET_FILES
+	files=$$(find assets static -type f | sort) || { \
+	  $(ERR) "find failed over assets/ static/"; exit 1; \
+	}; \
+	if [ -z "$$files" ]; then \
+	  $(ERR) "no files found under assets/ static/ - wrong directory, or a rename"; \
+	  exit 1; \
+	fi
+endef
+
+# Whether a file is dirty is defined as "would a strip change it", asked by
+# stripping a copy and diffing the metadata. That is the whole reason there is
+# no list of forbidden tags: a list is a second opinion that drifts, and this
+# one cannot - check-meta objects to exactly what strip-meta removes, on every
+# format exiftool handles rather than the handful someone thought to enumerate.
+#
+# The earlier version did keep such a list, and a JPEG COM segment reading
+# "exported by Jane Doe /Users/jane/Desktop" was not on it. check-meta passed
+# the file, and strip-meta skipped it for being clean - so the list capped the
+# fixer as well as the check, and `-all=` never ran on a file it would have
+# cleaned in full.
+define META_DIFF
+	if ! exiftool -q -s3 -FileType -- "$$f" >/dev/null 2>&1 || \
+	   [ -z "$$(exiftool -q -q -s3 -FileType -- "$$f" 2>/dev/null)" ]; then \
+	  unknown=$$((unknown + 1)); \
+	  $(ERR) "$$f"; \
+	  printf '       %s\n' "exiftool cannot identify this format - nothing checked it"; \
+	  continue; \
+	fi; \
+	tmp=$$(mktemp "$${TMPDIR:-/tmp}/meta.XXXXXX"); \
+	cp "$$f" "$$tmp"; \
+	$(META_STRIP) "$$tmp" 2>/dev/null || true; \
+	removed=$$(diff <($(META_READ) "$$f" 2>/dev/null) \
+	                <($(META_READ) "$$tmp" 2>/dev/null) \
+	           | sed -n 's/^< //p'); \
+	rm -f "$$tmp"
+endef
+
+.PHONY: strip-meta
+strip-meta: ## Strip metadata from every non-text file under assets/ and static/
+	$(NEED_EXIFTOOL)
+	@$(SAY) "Stripping asset metadata"
+	@$(ASSET_FILES); \
+	 found=0; changed=0; unknown=0; \
+	 while IFS= read -r f; do \
+	   if $(IS_TEXT) "$$f" 2>/dev/null; then continue; fi; \
+	   found=$$((found + 1)); \
+	   $(META_DIFF); \
+	   [ -n "$$removed" ] || continue; \
+	   $(META_STRIP) "$$f"; \
+	   changed=$$((changed + 1)); \
+	   $(OK) "$$f - removed $$(printf '%s\n' "$$removed" | wc -l | tr -d ' ') tag(s)"; \
+	 done <<< "$$files"; \
+	 if [ "$$unknown" != "0" ]; then \
+	   $(WARN) "$$unknown file(s) exiftool could not identify - left untouched"; \
+	 fi; \
+	 if [ "$$changed" = "0" ]; then \
+	   $(OK) "$$found file(s) scanned - already clean"; \
+	 else \
+	   $(WARN) "$$changed of $$found file(s) rewritten - review and commit them"; \
+	 fi
+
+.PHONY: check-meta
+check-meta: ## Fail if a strip would change any non-text file under assets/ or static/
+	$(NEED_EXIFTOOL)
+	@$(SAY) "Checking asset metadata"
+	@$(ASSET_FILES); \
+	 found=0; dirty=0; unknown=0; \
+	 while IFS= read -r f; do \
+	   if $(IS_TEXT) "$$f" 2>/dev/null; then continue; fi; \
+	   found=$$((found + 1)); \
+	   $(META_DIFF); \
+	   [ -n "$$removed" ] || continue; \
+	   dirty=$$((dirty + 1)); \
+	   $(ERR) "$$f"; \
+	   printf '%s\n' "$$removed" | sed 's/^/       /'; \
+	 done <<< "$$files"; \
+	 if [ "$$dirty" != "0" ] || [ "$$unknown" != "0" ]; then \
+	   [ "$$dirty" = "0" ] || $(WARN) "$$dirty file(s) carry metadata - run make strip-meta"; \
+	   [ "$$unknown" = "0" ] || $(WARN) "$$unknown file(s) could not be identified - check them by hand"; \
+	   exit 1; \
+	 fi; \
+	 $(OK) "$$found file(s) clean"
+
+# -o extracts the offending token rather than the whole line, which keeps the
+# allow list matching what was actually found instead of whatever else shares
+# the line. Accepted hits belong in .leakignore, one regex per line, with a
+# comment saying why - loosening LEAK_PATTERNS instead hides the next one.
+.PHONY: check-leaks
+check-leaks: ## Fail if a text file under assets/ or static/ names a real path, host or key
+	@$(SAY) "Scanning assets for identifying content"
+	@$(ASSET_FILES); \
+	 found=0; hits=0; \
+	 ign=$$(grep -vE '^[[:space:]]*(#|$$)' .leakignore 2>/dev/null | paste -sd'|' - || true); \
+	 while IFS= read -r f; do \
+	   $(IS_TEXT) "$$f" 2>/dev/null || continue; \
+	   found=$$((found + 1)); \
+	   out=$$(grep -nIoE '$(LEAK_PATTERNS)' -- "$$f" 2>/dev/null | grep -vE '$(LEAK_ALLOW)' || true); \
+	   if [ -n "$$out" ] && [ -n "$$ign" ]; then \
+	     out=$$(printf '%s\n' "$$out" | grep -vE "$$ign" || true); \
+	   fi; \
+	   [ -n "$$out" ] || continue; \
+	   hits=$$((hits + 1)); \
+	   $(ERR) "$$f"; \
+	   printf '%s\n' "$$out" | sed 's/^/       line /'; \
+	 done <<< "$$files"; \
+	 if [ "$$hits" != "0" ]; then \
+	   $(WARN) "$$hits file(s) name something real - fix them, or record the"; \
+	   $(WARN) "exception in .leakignore with a reason"; \
+	   exit 1; \
+	 fi; \
+	 $(OK) "$$found file(s) clean"
+
+.PHONY: check-assets
+check-assets: check-meta check-leaks ## Both asset checks - what the PR gate runs
 
 ##@ Theme
 

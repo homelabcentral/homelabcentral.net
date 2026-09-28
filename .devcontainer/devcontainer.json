@@ -72,7 +72,8 @@
         "austenc.tailwind-docs",
         "kamikillerto.vscode-colorize",
         "ecmel.vscode-html-css",
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        "github.vscode-github-actions"
       ]
     }
   },
@@ -94,9 +95,18 @@
   // seed ownership from. Claim it for the container user before installing,
   // otherwise npm fails with EACCES on the first mkdir.
   //
-  // Nothing else is needed: the theme ships its CSS already compiled, so this
-  // site never runs tailwind or postcss. npm is here for prettier only.
-  "postCreateCommand": "sudo chown \"$(id -u):$(id -g)\" /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config && sudo chown -R \"$(id -u):$(id -g)\" node_modules && npm install",
+  // npm is here for prettier only: the theme ships its CSS already compiled,
+  // so this site never runs tailwind or postcss.
+  //
+  // exiftool is the one package the image does not already carry. The Assets
+  // targets in the Makefile read and rewrite image metadata with it, and
+  // build-check.yml runs `make check-assets` as part of the required check -
+  // so without it those targets are unusable from inside the container while
+  // still being able to fail a pull request. It goes before the npm install
+  // rather than after it: chained on the end, a flaky `npm install` would
+  // leave the container without the one tool needed to run the check that is
+  // about to fail the contributor's pull request.
+  "postCreateCommand": "sudo chown \"$(id -u):$(id -g)\" /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config && sudo apt-get update -qq && sudo apt-get install -y -qq libimage-exiftool-perl && sudo chown -R \"$(id -u):$(id -g)\" node_modules && npm install",
   // Docker Desktop's VirtioFS periodically serves uid 0 for the *root inode* of
   // a bind mount - measured in the sibling hextra container at ~11% of reads.
   // Children are never affected, because they are looked up from their parent,
