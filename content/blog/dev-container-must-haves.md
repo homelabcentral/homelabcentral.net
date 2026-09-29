@@ -13,7 +13,7 @@ excludeSearch: false
 # The excerpt shown on the blog card and on tag pages. The `<!--more-->` marker
 # further down outranks front matter for Hugo's own `.Summary`, which is what
 # feeds `<meta name="description">` and `og:description`, so this is card-only.
-summary: "Five things every dev container should forward from the host: the timezone, your SSH key, a gh token, your Claude login, and a non-root user. Compatible with - devcontainer.json, docker-compose.yml and Dockerfile"
+summary: "Five things every dev container should forward from the host: the timezone, your SSH key, a gh token, your Claude login, and a non-root user. Written for all three shapes: devcontainer.json, docker-compose.yml and Dockerfile."
 # Keeps every setup-style tab block on the page in step with the others.
 tabs:
   sync: true
@@ -24,42 +24,42 @@ coverText: |
 ---
 
 {{< lead >}}
-A robust dev container needs these from the host - timezone, git credentails, gh cli, code agent login/authentication, a non root user.
+A robust dev container needs five things from the host: the timezone, your git credentials, the gh CLI's login, your coding agent's authentication, and a non-root user.
 {{< /lead >}}
 
 ## The problem
 
-A dev container gives you a clean, reproducible environment per project. But often overlooked are some things that are provided on the host for free.
+A dev container gives you a clean, reproducible environment per project. What is easy to overlook is everything the host had been providing for free until you moved in.
 
 {{% details title="Timezone" closed="true" %}}
-A timezone is very important for the dev container, especially for logging. By default the timezone is Etc/UTC but that can be wrong since it is not yours or the projects correct timezone. While we ship the Dockerfile or mount the timezone in docker compose for deployed projects. We must also provide the dev container a timezone as well.
+A timezone matters inside a dev container, above all for logs. The default is `Etc/UTC`, which is almost certainly neither yours nor the project's. For deployed projects we already set the zone in the Dockerfile, or mount it through Docker Compose — the dev container deserves the same.
 {{% /details %}}
 
 {{% details title="Git Credentials" closed="true" %}}
-Pass the same or different git credentials/ssh key to devcontainer to keep git working without a hiccup.
+Pass the host's git credentials into the dev container — the same SSH key, or a different one — so git keeps working without a hiccup.
 {{% /details %}}
 
-{{% details title="Github CLI" closed="true" %}}
-Github cli is essential for doing operations on github. While the host can authenticate the cli using auth, a better option for a dev container is to use a fine-granined PAT (personalized access token) that is scoped only with the necessary privilages to perform certain operations on github. This PAT lives on the host and is only requeted when necessary.
+{{% details title="GitHub CLI" closed="true" %}}
+The GitHub CLI is essential for anything you do on GitHub. The host can authenticate it with `gh auth login`, but a dev container is better served by a fine-grained PAT (personal access token), scoped to only the privileges the project needs. That PAT lives on the host and is handed over only when it is asked for.
 {{% /details %}}
 
 {{% details title="Claude Code/AI coding agent" closed="true" %}}
-If you are using any other AI coding agent other than github copilot. Authenticating for each dev container or every time you rebuild becomes a chore. So, use a token forwarding to authenticate the same coding agent inside the dev container as well.
+Unless your AI coding agent is GitHub Copilot, authenticating it in every dev container — and again after every rebuild — becomes a chore. Forward a token instead, and the agent inside the container is signed in as the same account it is on the host.
 {{% /details %}}
 
 {{% details title="Non-root User" closed="true" %}}
-Docker gives root access on host if a docker container runs as root. A better option is to run the dev container as a non-root user if you are not binding to any privilaged ports.
+A container that runs as root writes files onto the host as root, and hands root to everything running inside it. Unless you have to bind a privileged port, run the dev container as a non-root user.
 {{% /details %}}
 <!--more-->
 
 ## The five
 
 {{< cards cols="3" >}}
-{{< card link="#timezone-forwarding" title="Timezone" icon="clock" subtitle="The container's clock, in your zone, so timestamps mean something." >}}
-{{< card link="#ssh-forwarding" title="SSH" icon="key" subtitle="git push works, and your private keys never enter the container." >}}
-{{< card link="#gh-cli-forwarding" title="gh CLI" icon="github" subtitle="A scoped token per project, read from the host's secret store." >}}
-{{< card link="#claude-forwarding" title="Claude" icon="sparkles" subtitle="Sign in once, not once per container per rebuild." >}}
-{{< card link="#run-as-a-user-not-root" title="Non-root user" icon="user-circle" subtitle="Files you create stay yours, on both sides of the mount." >}}
+{{< card link="#1-timezone-forwarding" title="Timezone" icon="clock" subtitle="The container's clock, in your zone, so timestamps mean something." >}}
+{{< card link="#2-ssh-forwarding" title="SSH" icon="key" subtitle="git push works, and the key stays encrypted — the host agent signs." >}}
+{{< card link="#3-github-cli-forwarding" title="gh CLI" icon="github" subtitle="A scoped token per project, read from the host's secret store." >}}
+{{< card link="#4-claude-forwarding" title="Claude" icon="sparkles" subtitle="Sign in once, not once per container per rebuild." >}}
+{{< card link="#5-run-as-a-user-not-root" title="Non-root user" icon="user-circle" subtitle="Files you create stay yours, on both sides of the mount." >}}
 {{< /cards >}}
 
 ## The example, and the three ways to build it
@@ -98,14 +98,15 @@ so the parts compose instead of contradicting each other:
 {{< /borderless-table >}}
 
 {{< callout type="info" >}}
-Three host variables carry everything across. Two are set unconditionally,
-one only while VS Code is looking:
+Four host variables carry everything across. Two are set unconditionally, two
+only while VS Code is looking:
 
 - `HOST_TZ` — the host's IANA timezone. Not a secret.
+- `PROJECT_SSH_KEY` — the filename of this project's SSH key. Not a secret.
 - `PROJECT_GH_TOKEN` — a GitHub token, scoped to this project.
 - `PROJECT_CLAUDE_TOKEN` — a Claude Code OAuth token, if you go that route.
 
-Rename the last two per project. That is the whole point of them.
+Rename the last three per project. That is the whole point of them.
 {{< /callout >}}
 
 ---
@@ -120,15 +121,18 @@ filenames of anything you name after the time.
 Two ways to fix it.
 
 {{< borderless-table >}}
-| Approach                    | What it does                                         | Best for                                |
-| --------------------------- | ---------------------------------------------------- | --------------------------------------- |
-| Bind-mount | Container reads the host's zoneinfo file `/etc/localtime` directly   | Linux hosts                             |
-| Export an IANA zone name    | Container gets `TZ=Europe/London` in its environment | Everywhere, including macOS and Windows |
+| Approach                 | What it does                                                       | Best for                                |
+| ------------------------ | ------------------------------------------------------------------ | --------------------------------------- |
+| Bind-mount               | Container reads the host's zoneinfo file `/etc/localtime` directly | Linux hosts                             |
+| Export an IANA zone name | Container gets `TZ=Europe/London` in its environment               | Everywhere, including macOS and Windows |
 {{< /borderless-table >}}
 
-The mount is shorter to write. The variable is the one that works on every
-host, because on macOS and Windows the Docker daemon runs inside its own Linux
-VM and `/etc/localtime` is the VM's file, not your laptop's.
+The mount is shorter to write, but the variable is the one that works on every
+host: on macOS and Windows the Docker daemon runs inside its own Linux VM, so
+`/etc/localtime` there is the VM's file and not your laptop's.
+
+**Exporting an IANA zone name is the preferred approach.** The bind-mount is
+worth reaching for only on a Linux host.
 
 {{< callout type="info" >}}
 A timezone is not a credential. Export it unconditionally in your shell
@@ -140,12 +144,14 @@ reproduction of a production incident in UTC, a team in another country. Give
 that one its own variable name, `PROJECT_TZ`, and set it per project rather
 than bending `HOST_TZ` to fit.
 
-For a team project, if you must use a specific timezone. You can also always just hardcode it.
+And for a team project that has to run in one agreed timezone, hardcoding the
+zone name is perfectly reasonable.
 {{< /callout >}}
 
-### Export an IANA zone name
+### 1.1 Export an IANA zone name — preferred
 
-Exporing the IANA zone name if the preffered method.
+Works on macOS, Linux and Windows, needs nothing from the host's filesystem,
+and falls back to UTC instead of failing when the variable is missing.
 
 {{% steps %}}
 
@@ -371,7 +377,7 @@ minimum a new terminal — _Reload Window_ will not move the clock of anything
 already running.
 {{< /callout >}}
 
-{{% details title="The bind-mount route, if you are on Linux" closed="true" %}}
+### 1.2 Bind-mount the host's zoneinfo — Linux hosts only
 
 On a Linux host the daemon shares the host's kernel and filesystem, so
 `/etc/localtime` really is the file you think it is:
@@ -401,7 +407,6 @@ It also has one real limitation, which is why it is not the main route above.
 On macOS and on Windows the path is resolved inside Docker's Linux VM, so you
 either mount the VM's UTC file over your container's UTC file, or the bind
 fails outright because the source does not exist. Neither is what you wanted.
-{{% /details %}}
 
 ---
 
@@ -412,20 +417,143 @@ needs a key. There are two honest ways to give it one, and they are not the
 same trade.
 
 {{< borderless-table >}}
-| Approach          | What crosses the boundary           | Cost                                  |
-| ----------------- | ----------------------------------- | ------------------------------------- |
-| Forward the agent | Nothing. The host signs on request. | The agent must already hold the key   |
-| Mount the key     | The key file itself                 | Anything in the container can read it |
+
+| Approach              | What crosses the boundary                        | Cost                                           |
+| --------------------- | ------------------------------------------------ | ---------------------------------------------- |
+| Forward the agent     | An encrypted key file. The host does the signing | The agent must hold the key, or nothing pushes |
+| Mount an unlocked key | A key anything can use                           | Any process in the container can copy it out   |
+
 {{< /borderless-table >}}
 
-Forwarding is the default and the better one: VS Code binds the host's
-`SSH_AUTH_SOCK` into the container automatically, and the container never holds
-key material — it hands a challenge to the host agent and gets a signature
-back. Your private key does not move.
+**Forwarding the agent is the preferred approach.** Mount an unlocked key only
+where there is no agent to forward.
 
-The catch is the first four words of that sentence. The agent signs with what
-it is holding, and an agent that was never given your key holds nothing. That
-is what the lazy load below is for.
+### 2.1 Forward the agent — preferred
+
+VS Code binds the host's `SSH_AUTH_SOCK` into the container automatically. The
+container asks the agent to sign a challenge and gets a signature back; the
+passphrase, and the decrypted key, never leave the host.
+
+The key file itself is still mounted, read-only, at a fixed path. That sounds
+like it gives the file away and does not, because the file is encrypted and
+nothing in the container can unlock it. What it buys is a configuration that
+behaves like every other ssh setup you have ever read: `IdentityFile` names a
+private key, the way it does everywhere else.
+
+Two things follow from that, and both are worth having:
+
+- **`docker exec` cannot push.** It gets no forwarded agent, so the key it can
+  read is the key it cannot use. Only a session VS Code opened can write to
+  GitHub.
+- **Which identity the container uses is declared in the repository**, not
+  inherited from whichever laptop you opened it on. The host's `~/.ssh/config`
+  is never mounted and never parsed.
+
+The catch is the agent. It signs with what it is holding, and an agent that was
+never given your key holds nothing — which is what step 2 is for.
+
+{{% steps %}}
+
+### Pick the key this container will use
+
+You almost certainly already have one. Look before you make another:
+
+```shell
+ls -l ~/.ssh/*.pub
+```
+
+Any key on that list works. Reuse the one GitHub already knows — typically
+`~/.ssh/id_ed25519` — and there is nothing to create, nothing to upload, and
+nothing to wait for. Skip to storing its passphrase below.
+
+Only the key you name here is mounted or loaded. The rest of `~/.ssh` stays on
+the host and never reaches the container, which is the point of the fixed path
+in step 5.
+
+{{% details title="When a separate key is worth it" closed="true" %}}
+
+Three cases, and none of them is "a new project":
+
+- The container will act as a **different GitHub account** than your host
+  normally does — your personal account on a work laptop, say.
+- You want to be able to **revoke this one key** without breaking every other
+  repository on the machine.
+- The key will be mounted **unlocked**, as in 2.2, where the blast radius is
+  the whole reason to keep it separate.
+
+If none of those apply, reuse what you have.
+
+{{% /details %}}
+
+{{% details title="Creating one, if you decided you need it" closed="true" %}}
+
+```shell
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_project -C "your-project"
+```
+
+Give it a real passphrase. The whole design below rests on the mounted file
+being useless on its own.
+
+Then **add the public half to the GitHub account it should authenticate as** —
+a key GitHub has never seen authenticates as nobody:
+
+```shell
+cat ~/.ssh/id_ed25519_project.pub
+```
+
+Sign in as that account, go to **Settings → SSH and GPG keys → New SSH key**,
+paste the whole line, and give it the name of the machine it lives on. Choose
+key type **Authentication key**; a signing key is a separate entry and does not
+let you push.
+
+{{< callout type="warning" >}}
+Miss this and everything else in this section still looks correct. The mount
+lands, the agent holds the key, `ssh-add -l` lists it — and every push fails
+with `Permission denied (publickey)`, because GitHub has no idea whose key that
+is.
+{{< /callout >}}
+
+{{% /details %}}
+
+Whichever key you settled on, store its passphrase so you are not typing it
+again. Substitute your own filename for `id_ed25519_project` here and in every
+step that follows:
+
+{{< tabs >}}
+
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
+
+```shell
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_project
+```
+
+The passphrase goes into the login keychain, and every later `ssh-add` for this
+key reads it from there without prompting.
+
+{{< /tab >}}
+
+{{< tab name="Ubuntu" icon="iconify:bi/ubuntu" >}}
+
+There is no `--apple-use-keychain` here. The equivalent is **gcr-ssh-agent**,
+which took over SSH duty when gnome-keyring 46 dropped it — enable it once, and
+a passphrase you have entered survives a reboot:
+
+```shell
+systemctl --user enable --now gcr-ssh-agent.socket
+ssh-add ~/.ssh/id_ed25519_project
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+{{< callout type="info" >}}
+An existing key with **no** passphrase still works here, and the mount is then
+exactly as exposed as 2.2 — anything in the container can read and use it.
+Either add one with `ssh-keygen -p -f ~/.ssh/id_ed25519`, which changes nothing
+on GitHub's side because the public half is unchanged, or accept the trade
+knowingly.
+{{< /callout >}}
 
 ### Load the key lazily, on the host
 
@@ -448,12 +576,8 @@ if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
 fi
 ```
 
-`--apple-use-keychain` reads the passphrase from the login keychain, so nothing
-prompts. It has to have been stored once, interactively:
-
-```shell
-ssh-add --apple-use-keychain ~/.ssh/id_ed25519_project
-```
+`--apple-use-keychain` reads the passphrase you stored in the previous step, so
+nothing prompts.
 
 {{< /tab >}}
 
@@ -468,14 +592,6 @@ if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
   fi
   unset key fp
 fi
-```
-
-There is no `--apple-use-keychain` here. The equivalent is **gcr-ssh-agent**,
-which took over SSH duty when gnome-keyring 46 dropped it — enable it once and
-a passphrase you have entered survives a reboot:
-
-```shell
-systemctl --user enable --now gcr-ssh-agent.socket
 ```
 
 The `</dev/null` matters: without it, a key that still wants a passphrase makes
@@ -513,36 +629,67 @@ The fix is mechanical:
 4. Now _Rebuild Container_.
 {{< /callout >}}
 
-### Wire it into the container
+### Name the key on the host, so the config never has to
 
-{{% steps %}}
+One variable decides which key this project uses. Everything downstream refers
+to a fixed path instead, which is what lets a second repository copy the same
+files and point at a different key:
 
-### Give ssh a config it can resolve
+```zsh {filename="~/.zshrc"}
+export PROJECT_SSH_KEY=id_ed25519_project
+```
+
+No guard on this one. A filename is not a secret, and the container needs it at
+build time as well as at connect time.
+
+### Declare the identity in the repository
 
 The agent may hold more than one key. With nothing to choose by, ssh offers
-them in the agent's order and the server accepts the first that matches — which
-may be the wrong account, and you will not notice, because the connection
-succeeds.
+them in the agent's order and GitHub answers as whichever account matches
+first — and you will not notice, because the connection succeeds.
 
-Put the choice in the repository, where it is a property of the container
-rather than of whichever laptop you opened it on:
+So put the choice in the repository, next to everything else that describes
+this container:
 
 ```sshconfig {filename=".devcontainer/ssh-config"}
-Host github.com
+Host github.com github-project
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_container.pub
+  IdentityFile ~/.ssh/id_container
   IdentitiesOnly yes
 ```
 
-`IdentityFile` pointing at a **public** key is not a typo. The private half is
-in the forwarded agent; ssh uses the public key only to decide which agent
-identity to offer, and the agent does the signing. `IdentitiesOnly yes` is what
-makes the line binding instead of a suggestion.
+Four things are load-bearing here:
 
-### Mount the public half and link the config
+- **Nothing names a host path, a key file or an account.** The path is
+  `id_container`, which the mount in the next step points at whatever
+  `PROJECT_SSH_KEY` says. The file is portable between projects unchanged.
+- **Both spellings resolve to the same identity.** `github-project` is the alias
+  you give the remote so the _host_ — which keeps its own multi-key config —
+  selects the right key for the same URL. `github.com` is there so that a bare
+  `git@github.com` inside the container, typed by you or by some tool, cannot
+  land on a different identity.
+- **`IdentityFile` names the private key**, not the `.pub`. That is the ordinary
+  arrangement, it is what every other ssh setup you meet looks like, and it
+  keeps working if the agent is ever not there — ssh falls back to asking for
+  the passphrase rather than failing with `Permission denied (publickey)`.
+- **`IdentitiesOnly yes` is what makes any of it binding.** Alone,
+  `IdentityFile` is a preference: the forwarded agent still offers every key it
+  holds and GitHub accepts the first that maps to an account. It does not
+  bypass the agent — signing still happens there, which is what unlocks the
+  passphrase-protected key — it just narrows what the agent is asked to offer.
 
-Nothing secret crosses here — a `.pub` file is public by definition.
+{{< callout type="info" >}}
+Because the host's `~/.ssh/config` is never mounted, `IgnoreUnknown UseKeychain`
+stops being a requirement. The macOS-only keywords that make Linux OpenSSH
+abort a config file live on the host, in a file this container does not read.
+{{< /callout >}}
+
+### Mount both halves at that fixed path
+
+Read-only, and both files: ssh reads `id_container.pub` to work out which
+identity to offer the agent, and reading it separately means it never has to
+touch the encrypted private file to do so.
 
 {{< tabs >}}
 
@@ -550,10 +697,24 @@ Nothing secret crosses here — a `.pub` file is public by definition.
 
 ```json {filename=".devcontainer/devcontainer.json"}
   "mounts": [
+    "source=ssh-home-${devcontainerId},target=/home/vscode/.ssh,type=volume",
+    "source=${localEnv:HOME}/.ssh/id_ed25519_project,target=/home/vscode/.ssh/id_container,type=bind,readonly",
     "source=${localEnv:HOME}/.ssh/id_ed25519_project.pub,target=/home/vscode/.ssh/id_container.pub,type=bind,readonly"
-  ],
-  "postCreateCommand": "ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config"
+  ]
 ```
+
+The volume comes first so `~/.ssh` is a writable directory the two binds then
+land inside. Without it, `known_hosts` is written into the container's
+filesystem and lost on every rebuild, and you re-confirm GitHub's host key
+forever.
+
+{{< callout type="warning" >}}
+`devcontainer.json` has no default-value syntax, so `${localEnv:PROJECT_SSH_KEY}`
+on an unset variable expands to nothing — and
+`source=${localEnv:HOME}/.ssh/` would then bind your **entire** `~/.ssh` into
+the container. Name the file literally in this shape, and keep the variable for
+the compose one, which has real defaults.
+{{< /callout >}}
 
 {{< /tab >}}
 
@@ -564,9 +725,14 @@ services:
   dev:
     volumes:
       - ..:/workspaces/your-project:cached
+      # ~/.ssh as a named volume, so known_hosts outlives a rebuild.
       - ssh_home:/home/vscode/.ssh
       - type: bind
-        source: ${HOME}/.ssh/id_ed25519_project.pub
+        source: ${HOME}/.ssh/${PROJECT_SSH_KEY:-id_ed25519_project}
+        target: /home/vscode/.ssh/id_container
+        read_only: true
+      - type: bind
+        source: ${HOME}/.ssh/${PROJECT_SSH_KEY:-id_ed25519_project}.pub
         target: /home/vscode/.ssh/id_container.pub
         read_only: true
 
@@ -574,48 +740,69 @@ volumes:
   ssh_home:
 ```
 
-```json {filename=".devcontainer/devcontainer.json"}
-  "postCreateCommand": "sudo chown \"$(id -u):$(id -g)\" /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config"
-```
-
-A named volume for `~/.ssh` keeps `known_hosts` across rebuilds, so you are not
-re-confirming GitHub's host key every time. Docker creates that volume
-root-owned, which is what the `chown` is for — non-recursive, because the key
-mounted inside it is read-only.
+Here the variable earns its place: `${PROJECT_SSH_KEY:-id_ed25519_project}`
+falls back to a real filename when the host has not set it, so a fresh clone on
+a fresh machine still builds.
 
 {{< callout type="error" >}}
-Write the bind in **long syntax**, not as a `source=...,target=...` string. On
-the compose code path the dev containers CLI uses, a mount string's `readonly`
-flag is silently dropped. `read_only: true` under long syntax survives.
+Write the binds in **long syntax**, not as `source=...,target=...` strings. The
+compose path through the dev containers CLI re-emits mounts through a
+conversion whose interface has no `readonly` field, so `readonly` in a mount
+**string** is silently dropped — you get a writable bind onto your host key and
+no warning. `read_only: true` under long syntax survives.
 {{< /callout >}}
 
 {{< /tab >}}
 
 {{< tab name="Dockerfile" icon="iconify:simple-icons/docker" >}}
 
-The Dockerfile's only job here is to make sure the directory exists with the
-right ownership before anything is mounted into it:
+The mounts stay in `devcontainer.json` or `docker-compose.yml` — a key baked
+into an image is a key in a layer, and layers get pushed. What the Dockerfile
+can usefully do is create `~/.ssh` **owned by the right user**, because a named
+volume mounted over a path that exists in the image inherits that path's
+contents and ownership:
 
 ```dockerfile {filename=".devcontainer/Dockerfile"}
 USER vscode
 RUN mkdir -p /home/vscode/.ssh && chmod 700 /home/vscode/.ssh
 ```
 
-The mount and the symlink stay in `devcontainer.json` or `docker-compose.yml`
-exactly as in the other two tabs. A key baked into an image is a key in a layer
-that gets pushed to a registry, so there is nothing else for the Dockerfile to
-do.
-
-{{< callout type="warning" >}}
-`ssh` refuses to read a config or a key directory that is group- or
-world-writable, and says so with `Bad owner or permissions` — which looks
-nothing like a key problem. `chmod 700` on `~/.ssh` is the fix, and it has to
-survive whatever gets mounted over it.
-{{< /callout >}}
+Do that and the `chown` in the next step becomes a no-op you can keep for the
+other two shapes. Skip it, and Docker creates the volume root-owned, because
+there is nothing in the image at that path to copy ownership from.
 
 {{< /tab >}}
 
 {{< /tabs >}}
+
+### Own the directory and link the config
+
+Three commands, in `postCreateCommand`, in this order:
+
+```json {filename=".devcontainer/devcontainer.json"}
+  "postCreateCommand": "sudo chown \"$(id -u):$(id -g)\" /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && ln -sfn \"${containerWorkspaceFolder}/.devcontainer/ssh-config\" /home/vscode/.ssh/config"
+```
+
+- **`chown`** — Docker creates a named volume root-owned unless the image
+  already had that directory, and ssh cannot write `known_hosts` into a
+  directory it does not own. It is deliberately **not** recursive: the two keys
+  inside are read-only binds, and `chown -R` fails on them.
+- **`chmod 700`** — ssh refuses to use a config or key directory that is group-
+  or world-readable, and says so with `Bad owner or permissions`, which looks
+  nothing like a key problem.
+- **`ln -sfn`** — a symlink, not a mount. The config is already inside the
+  bind-mounted workspace, so linking to it means an edit takes effect on the
+  next connection rather than the next rebuild.
+
+### Point the remote at the alias
+
+```shell
+git remote set-url origin github-project:you/your-project.git
+```
+
+Inside the container both spellings work. On the host, where your own
+`~/.ssh/config` has several keys, the alias is what selects the right one for
+the same repository — so the remote is correct on both sides of the boundary.
 
 ### Verify
 
@@ -623,47 +810,67 @@ Inside the container:
 
 ```shell
 ssh-add -l
+ls -l ~/.ssh
+ssh -T github-project
 ssh -T git@github.com
+git remote -v
 ```
 
-The first lists what the forwarded agent is holding — empty output means the
-host never loaded the key, so go back to the shell profile, and quit VS Code
-properly. The second should greet you by name:
+`ssh-add -l` lists what the forwarded agent is holding. Empty output means the
+host never loaded the key — go back to step 2, and quit VS Code properly.
+
+`ls -l ~/.ssh` should show `config` as a symlink into `.devcontainer/`, plus
+`id_container` and `id_container.pub`. Both `ssh -T` calls should greet the same
+account:
 
 ```text
 Hi you! You've successfully authenticated, but GitHub does not
 provide shell access.
 ```
 
-{{% /steps %}}
+Two names, or one name you did not expect, means `IdentitiesOnly yes` is
+missing or the config is not actually linked.
 
-{{% details title="If you would rather mount the key than forward the agent" closed="true" %}}
+Then confirm the boundary holds, from the **host**:
 
-Sometimes there is no agent to forward: a Codespace, a CI runner, a headless
-box you reach over Remote SSH. Mount the private half instead, read-only, and
-generate a key used for nothing else so the blast radius is one project:
-
-```json {filename=".devcontainer/devcontainer.json"}
-  "mounts": [
-    "source=${localEnv:HOME}/.ssh/id_ed25519_project,target=/home/vscode/.ssh/id_container,type=bind,readonly",
-    "source=${localEnv:HOME}/.ssh/id_ed25519_project.pub,target=/home/vscode/.ssh/id_container.pub,type=bind,readonly"
-  ]
+```shell
+docker exec -it <container> ssh -T github-project
 ```
 
-Point `IdentityFile` at `~/.ssh/id_container` — the private one — in the ssh
-config, and give the key **no passphrase**, because there is nothing in the
-container to type one into.
+```text
+git@github.com: Permission denied (publickey).
+```
+
+That failure is the design working. `docker exec` gets no forwarded agent, so
+the key it can read is a key it cannot use.
+
+{{% /steps %}}
+
+### 2.2 Mount an unlocked key
+
+Sometimes there is no agent to forward: a Codespace, a CI runner, a headless
+box you reach over Remote SSH. The shape above still applies — same
+`ssh-config`, same `id_container` path, same mounts — with one change, and it
+is the expensive one:
+
+```shell
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_project_ci -N "" -C "your-project ci"
+```
+
+`-N ""` means no passphrase, because there is nothing in the container to type
+one into. Add its public half to the GitHub account exactly as in step 1 — a
+new key is still a key GitHub has never seen — then point `PROJECT_SSH_KEY` at
+it. Drop step 2, since there is no agent to load, and drop the `docker exec`
+check at the end of step 8, since there is no boundary left to demonstrate.
 
 Understand what you traded. Any process in that container, including a
-dependency's install script, can read the key and copy it out. Mount exactly
+dependency's install script, can now read the key **and use it**. Mount exactly
 one key, use it for exactly one thing, and be able to revoke it without
 touching anything else.
 
-{{% /details %}}
-
 ---
 
-## 3. Github CLI forwarding
+## 3. GitHub CLI forwarding
 
 VS Code has its own GitHub sign-in, and inside a dev container it is not
 reliably the thing `gh` reads. The account picker signs the _editor_ in; `gh` in
@@ -677,7 +884,8 @@ with no expiry and no rotation.
 A scoped personal access token in the host's secret store is better on every
 axis. It is per project, so a leak is bounded. It expires on a date you chose.
 And it is looked up at the moment VS Code needs it, so it is never written to a
-file in the repository.
+file in the repository. **It is the preferred approach, and the only one this
+section sets up.**
 
 The real payoff is that a token is just a variable name. You can hold several:
 
@@ -915,16 +1123,18 @@ Claude Code writes _both_ inside it. That single variable is the piece people
 miss.
 
 Three ways to go, and they differ only in what you are willing to expose.
+**4.1 is the preferred approach when every container you open holds your own
+code.** Use 4.2 or 4.3 for anything third-party.
 
 {{< borderless-table >}}
-|                                  | Shares credentials     | Survives rebuild | Container can read your host login |
-| -------------------------------- | ---------------------- | ---------------- | ---------------------------------- |
-| **A** — bind-mount `~/.claude`   | across every container | yes              | yes                                |
-| **B** — named volume per project | no                     | yes              | no                                 |
-| **C** — long-lived token         | across every container | yes              | no                                 |
+|                                    | Shares credentials     | Survives rebuild | Container can read your host login |
+| ---------------------------------- | ---------------------- | ---------------- | ---------------------------------- |
+| **4.1** — bind-mount `~/.claude`   | across every container | yes              | yes                                |
+| **4.2** — named volume per project | no                     | yes              | no                                 |
+| **4.3** — long-lived token         | across every container | yes              | no                                 |
 {{< /borderless-table >}}
 
-### Option A — one login shared by every container
+### 4.1 Bind-mount your host login — preferred
 
 The simplest, and the right default when every container you run holds your own
 code.
@@ -987,7 +1197,7 @@ Microsoft's base images use `vscode`; the Node ones use `node`. Rebuild once,
 sign in once, and every container carrying this mount is signed in from then
 on.
 
-### Option B — persistent, but isolated per project
+### 4.2 A named volume per project
 
 Same durability, no sharing. A named volume keyed to the container survives
 rebuilds without ever touching your host's credentials:
@@ -1034,7 +1244,7 @@ Compose scopes volume names to the project already, so there is no
 
 {{< tab name="Dockerfile" icon="iconify:simple-icons/docker" >}}
 
-Identical to Option A — install the CLI, set `CLAUDE_CONFIG_DIR`, and let the
+Identical to 4.1 — install the CLI, set `CLAUDE_CONFIG_DIR`, and let the
 volume carry the state:
 
 ```dockerfile {filename=".devcontainer/Dockerfile"}
@@ -1056,7 +1266,7 @@ rather than a permissions one.
 You authenticate once per project instead of once per machine. Rebuilds are
 free.
 
-### Option C — skip the login flow entirely
+### 4.3 A long-lived token
 
 If you would rather mount no credentials at all, generate a long-lived token on
 the host and pass it in as a variable, exactly like the `gh` token above.
@@ -1086,21 +1296,80 @@ only make model requests: no Remote Control sessions, no claude.ai connectors.
 MCP servers you configure locally in a project still work.
 {{< /callout >}}
 
-### Store it where the container can reach it
+### Store it in the host's secret store
 
-Not in `devcontainer.json` — that file is committed. The options, roughly in
-order of convenience against safety:
+Not in `devcontainer.json` — that file is committed. It goes in the same place
+the `gh` token does, under its own name.
+
+{{< tabs >}}
+
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
+
+```shell
+security add-generic-password -a project -s claude-token-project -U -w
+```
+
+Leave `-w` bare and last. `security` then prompts for the value instead of
+taking it as an argument, so the token never lands in your shell history or in
+the process table. `-U` updates an existing item, which is what you will want in
+a year when this one expires.
+
+Read it back to confirm it stored:
+
+```shell
+security find-generic-password -a project -s claude-token-project -w
+```
+
+{{< /tab >}}
+
+{{< tab name="Ubuntu" icon="iconify:bi/ubuntu" >}}
+
+```shell
+sudo apt install libsecret-tools
+secret-tool store --label='claude-token-project' account project service claude-token-project
+```
+
+`secret-tool` prompts and reads the value from stdin, so it stays out of your
+history too. `account` and `service` are attribute names you invent — these
+mirror the macOS command, and lookup matches them exactly.
+
+Read it back:
+
+```shell
+secret-tool lookup account project service claude-token-project
+```
+
+On a headless box or WSL there is no unlocked login keyring, and `secret-tool`
+returns nothing at all rather than an error. Use `pass` there:
+`pass insert project/claude-token`, read with `pass show project/claude-token`.
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+{{% details title="If you would rather not use the secret store" closed="true" %}}
+
+Roughly in order of convenience against safety:
 
 {{< borderless-table >}}
 | Where                              | Notes                                              |
 | ---------------------------------- | -------------------------------------------------- |
-| Host secret store                  | Same pattern as the `gh` token. Best default.      |
+| Host secret store                  | The route above. Best default.                     |
 | A gitignored `.env`, via `envFile` | Plaintext in the working tree. Workable, not good. |
 | A secrets manager or vault         | No plaintext on disk at all.                       |
 | A Codespaces secret                | Exposed as an environment variable automatically.  |
 {{< /borderless-table >}}
 
-Reuse the machinery you already built:
+{{% /details %}}
+
+### Export it, gated
+
+Same guard as the `gh` token, so the value exists only in the shell VS Code
+spawns to read your environment:
+
+{{< tabs >}}
+
+{{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
 
 ```zsh {filename="~/.zshrc"}
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -1108,6 +1377,28 @@ if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
     -a project -s claude-token-project -w 2>/dev/null)"
 fi
 ```
+
+{{< /tab >}}
+
+{{< tab name="Ubuntu" icon="iconify:bi/ubuntu" >}}
+
+```zsh {filename="~/.zshrc"}
+if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
+  export PROJECT_CLAUDE_TOKEN="$(secret-tool lookup \
+    account project service claude-token-project 2>/dev/null)"
+fi
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+{{< callout type="warning" >}}
+Never export it as `CLAUDE_CODE_OAUTH_TOKEN` on the host. Claude Code reads
+that variable before your own `/login` credentials, so every terminal on the
+machine would start using the standing token instead. The rename happens on the
+way into the container, and nowhere else.
+{{< /callout >}}
 
 ### Pass it in
 
@@ -1181,7 +1472,7 @@ this. Run with `--dangerously-skip-permissions` and nothing stops a malicious
 project from reading anything reachable inside the container — including
 `~/.claude` and anything in the environment.
 
-So: Option A for your own code. Option B or C for anything third-party, and a
+So: 4.1 for your own code. 4.2 or 4.3 for anything third-party, and a
 token you can revoke without touching your host login. The
 [Claude Code dev container docs](https://docs.claude.com/en/docs/claude-code/devcontainer)
 are explicit about this, and worth reading before you mount your real
@@ -1386,8 +1677,9 @@ timezone is ungated; the credentials are not.
 {{< tab name="macOS" icon="iconify:bi/apple" selected=true >}}
 
 ```zsh {filename="~/.zshrc"}
-# Timezone — not a secret, so no guard.
+# Timezone and key filename — neither is a secret, so no guard.
 export HOST_TZ="${$(readlink /etc/localtime)##*/zoneinfo/}"
+export PROJECT_SSH_KEY=id_ed25519_project
 
 # Everything below exists only while VS Code resolves the environment.
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -1411,8 +1703,9 @@ fi
 {{< tab name="Ubuntu" icon="iconify:bi/ubuntu" >}}
 
 ```zsh {filename="~/.zshrc"}
-# Timezone — not a secret, so no guard.
+# Timezone and key filename — neither is a secret, so no guard.
 export HOST_TZ="$(timedatectl show -p Timezone --value 2>/dev/null)"
+export PROJECT_SSH_KEY=id_ed25519_project
 
 # Everything below exists only while VS Code resolves the environment.
 if [[ -n $VSCODE_RESOLVING_ENVIRONMENT ]]; then
@@ -1467,6 +1760,8 @@ One file, one image.
   },
 
   "mounts": [
+    "source=ssh-home-${devcontainerId},target=/home/vscode/.ssh,type=volume",
+    "source=${localEnv:HOME}/.ssh/id_ed25519_project,target=/home/vscode/.ssh/id_container,type=bind,readonly",
     "source=${localEnv:HOME}/.ssh/id_ed25519_project.pub,target=/home/vscode/.ssh/id_container.pub,type=bind,readonly",
     "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind"
   ],
@@ -1478,10 +1773,10 @@ One file, one image.
 ```
 
 ```sshconfig {filename=".devcontainer/ssh-config"}
-Host github.com
+Host github.com github-project
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_container.pub
+  IdentityFile ~/.ssh/id_container
   IdentitiesOnly yes
 ```
 
@@ -1522,7 +1817,11 @@ services:
       - ssh_home:/home/vscode/.ssh
       - claude_config:/home/vscode/.claude
       - type: bind
-        source: ${HOME}/.ssh/id_ed25519_project.pub
+        source: ${HOME}/.ssh/${PROJECT_SSH_KEY:-id_ed25519_project}
+        target: /home/vscode/.ssh/id_container
+        read_only: true
+      - type: bind
+        source: ${HOME}/.ssh/${PROJECT_SSH_KEY:-id_ed25519_project}.pub
         target: /home/vscode/.ssh/id_container.pub
         read_only: true
 
@@ -1541,14 +1840,14 @@ volumes:
 ```
 
 ```sshconfig {filename=".devcontainer/ssh-config"}
-Host github.com
+Host github.com github-project
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_container.pub
+  IdentityFile ~/.ssh/id_container
   IdentitiesOnly yes
 ```
 
-This one takes Claude's Option B — a named volume rather than your host's
+This one takes Claude's 4.2 — a named volume rather than your host's
 `~/.claude` — because a compose stack is the shape you reach for when there are
 other services in play, and a stranger's `db` container on the same network is
 exactly when you want the isolated one. Swap the volume for the bind mount if
@@ -1604,6 +1903,8 @@ RUN mkdir -p /home/vscode/.ssh && chmod 700 /home/vscode/.ssh \
   },
 
   "mounts": [
+    "source=ssh-home-${devcontainerId},target=/home/vscode/.ssh,type=volume",
+    "source=${localEnv:HOME}/.ssh/id_ed25519_project,target=/home/vscode/.ssh/id_container,type=bind,readonly",
     "source=${localEnv:HOME}/.ssh/id_ed25519_project.pub,target=/home/vscode/.ssh/id_container.pub,type=bind,readonly",
     "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind"
   ],
@@ -1615,10 +1916,10 @@ RUN mkdir -p /home/vscode/.ssh && chmod 700 /home/vscode/.ssh \
 ```
 
 ```sshconfig {filename=".devcontainer/ssh-config"}
-Host github.com
+Host github.com github-project
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_container.pub
+  IdentityFile ~/.ssh/id_container
   IdentitiesOnly yes
 ```
 
