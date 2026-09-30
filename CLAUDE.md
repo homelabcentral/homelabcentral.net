@@ -352,6 +352,38 @@ If `GH_TOKEN` is empty in the container, the usual cause is VS Code's cached
 shell environment, which is resolved once per app session. Quit VS Code fully
 and relaunch — Reload Window and Rebuild Container both reuse the cache.
 
+### Run `git` and `gh` inside the container, from anywhere
+
+Both are authenticated in there and neither is on the host: the host's `gh` is
+signed in as a different account with `pull` and nothing else, and
+`HOMELABCENTRAL_GH_TOKEN` is only exported into VS Code's resolved environment,
+so a plain host shell has no way to become the right account. Opening a PR from
+the host therefore does not fail cleanly — `gh pr create` offers to fork instead.
+
+Being outside VS Code is not a reason to fall back to the host. The container
+is a normal Docker container and `docker exec` reaches it from any shell:
+
+```shell
+docker compose -f .devcontainer/docker-compose.yml ps   # or: docker ps
+docker exec homelabcentral-dev-1 bash -lc 'cd /workspaces/homelabcentral.net && gh pr create --base main --fill'
+```
+
+The name comes from the compose project, so it tracks the directory name —
+`docker ps` is the reliable way to read it rather than assuming.
+
+Two things that bite inside `docker exec`:
+
+- `/tmp` is not writable as the container user. A `--body-file` or any other
+  scratch file goes under `$HOME`, and a heredoc redirected to `/tmp` fails
+  with `Permission denied` — which `gh` will happily treat as an empty body
+  and open the PR anyway.
+- `bash -lc` is what loads the profile that puts `GH_TOKEN` in scope. Without
+  the login shell, `gh` is unauthenticated.
+
+Never echo `GH_TOKEN`, `HOMELABCENTRAL_GH_TOKEN` or `gh auth token` to the
+terminal to check them. `gh auth status` reports the account and the source
+without revealing the value.
+
 ## Skill routing
 
 When the user's request matches an available skill, invoke it via the Skill tool. When in doubt, invoke the skill.
