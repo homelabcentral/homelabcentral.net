@@ -1,6 +1,6 @@
 ---
 title: "PPSSPP"
-weight: 10
+weight: 15
 description: "PSP emulator, fast and near-complete."
 ---
 
