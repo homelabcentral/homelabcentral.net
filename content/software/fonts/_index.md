@@ -84,3 +84,29 @@ Two things are worth knowing before reaching for these. Individual ligatures can
 {{< callout type="info" >}}
 Editors that offer no OpenType control need a font built without ligatures. JetBrains publishes **JetBrains Mono NL** for exactly this, and Nerd Fonts patches it as `JetBrainsMonoNL Nerd Font`.
 {{< /callout >}}
+
+## Sans-serif text faces
+
+Not monospaced and not in the grid above — these are body-copy faces for a site or a document rather than anything a terminal would use. All five are on Google Fonts under the Open Font License, so the specimen page is also the download.
+
+{{< borderless-table >}}
+| Family | Type | Download |
+| --- | --- | --- |
+| Noto Sans | Open source | [fonts.google.com/specimen/Noto+Sans](https://fonts.google.com/specimen/Noto+Sans) |
+| Nunito | Open source | [fonts.google.com/specimen/Nunito](https://fonts.google.com/specimen/Nunito) |
+| Outfit | Open source | [fonts.google.com/specimen/Outfit](https://fonts.google.com/specimen/Outfit) |
+| Rubik | Open source | [fonts.google.com/specimen/Rubik](https://fonts.google.com/specimen/Rubik) |
+| Work Sans | Open source | [fonts.google.com/specimen/Work+Sans](https://fonts.google.com/specimen/Work+Sans) |
+{{< /borderless-table >}}
+
+Google Fonts serves a multi-family download from the same page — selecting several and taking one archive is quicker than five separate trips.
+
+## Dank Mono
+
+A monospaced coding face sold directly by its designer rather than distributed through Google Fonts or Homebrew, so it has no cask and no specimen page to link. Italics are a true cursive rather than a slanted roman, which is the reason people buy it.
+
+{{< borderless-table >}}
+| Family | Type | Download |
+| --- | --- | --- |
+| Dank Mono | Paid | [dank.sh](https://dank.sh) |
+{{< /borderless-table >}}
