@@ -361,22 +361,33 @@ so a plain host shell has no way to become the right account. Opening a PR from
 the host therefore does not fail cleanly — `gh pr create` offers to fork instead.
 
 Being outside VS Code is not a reason to fall back to the host. The container
-is a normal Docker container and `docker exec` reaches it from any shell:
+is a normal Docker container and `docker exec` reaches it from any shell.
+
+**Check whether it is already up, and if it is, just use it.** Do not rebuild
+it, do not reopen VS Code, do not ask whether to use it, and do not offer the
+host or a browser link as an alternative:
 
 ```shell
-docker compose -f .devcontainer/docker-compose.yml ps   # or: docker ps
+docker ps --format '{{.Names}}\t{{.Status}}'
 docker exec homelabcentral-dev-1 bash -lc 'cd /workspaces/homelabcentral.net && gh pr create --base main --fill'
 ```
 
 The name comes from the compose project, so it tracks the directory name —
-`docker ps` is the reliable way to read it rather than assuming.
+read it from `docker ps` rather than assuming. Only if nothing is running does
+starting it become the question: `docker compose -f
+.devcontainer/docker-compose.yml up -d`, or reopening the folder in VS Code.
 
-Two things that bite inside `docker exec`:
+Three things that bite inside `docker exec`:
 
+- **SSH does not work.** The forwarded agent belongs to the VS Code session, so
+  `docker exec` has no `SSH_AUTH_SOCK` and `git push` fails with
+  `Permission denied (publickey)` despite the mounted key. Push over HTTPS with
+  the `gh` credential helper instead:
+  `git -c credential.helper='!gh auth git-credential' push https://github.com/homelabcentral/homelabcentral.net.git HEAD:refs/heads/<branch>`
 - `/tmp` is not writable as the container user. A `--body-file` or any other
-  scratch file goes under `$HOME`, and a heredoc redirected to `/tmp` fails
-  with `Permission denied` — which `gh` will happily treat as an empty body
-  and open the PR anyway.
+  scratch file goes under `$HOME` or the repo, and a heredoc redirected to
+  `/tmp` fails with `Permission denied` — which `gh` will happily treat as an
+  empty body and open the PR anyway.
 - `bash -lc` is what loads the profile that puts `GH_TOKEN` in scope. Without
   the login shell, `gh` is unauthenticated.
 
