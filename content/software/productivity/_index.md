@@ -14,4 +14,5 @@ description: "PDFs, Markdown, chat, Shortcuts actions and package management fro
 {{< card link="mas" title="mas" icon="shopping-bag" subtitle="Mac App Store from the command line." >}}
 {{< card link="toolbox-pro" title="Toolbox Pro for Shortcuts" icon="puzzle" subtitle="Extra actions for Apple's Shortcuts app." >}}
 {{< card link="google-workspace-shortcuts" title="Google Docs, Sheets & Slides" icon="table" subtitle="Chrome web app shortcuts for the Google editors." >}}
+{{< card link="itsycal" title="Itsycal" icon="calendar" subtitle="Month calendar in the menu bar." >}}
 {{< /cards >}}
