@@ -16,4 +16,6 @@ Nearly all of this is one-time configuration that then disappears into muscle me
 {{< card link="boring-notch" title="boringNotch" icon="chevron-down" subtitle="Turn the MacBook notch into a usable widget." >}}
 {{< card link="amphetamine" title="Amphetamine" icon="sun" subtitle="Keep the Mac awake, on rules rather than a toggle." >}}
 {{< card link="amphetamine-enhancer" title="Amphetamine Enhancer" icon="plus-circle" subtitle="Adds abilities Amphetamine cannot have as a sandboxed app." >}}
+{{< card link="vorssaint" title="Vorssaint" icon="view-grid-add" subtitle="Menu bar toolkit: audio, monitoring, windows, mouse and clipboard." >}}
+{{< card link="mactap" title="MacTap" icon="hand" subtitle="Knock the chassis to run a shortcut." >}}
 {{< /cards >}}

@@ -29,4 +29,6 @@ Two tools do most of the real work: `ffmpeg` underneath almost everything, and D
 {{< card link="plex" title="Plex" icon="server" subtitle="Media server and client for a home library." >}}
 {{< card link="gif-maker" title="GIF Maker, GIF Editor" icon="film" subtitle="Make and edit GIFs on macOS." >}}
 {{< card link="gifski" title="Gifski" icon="color-swatch" subtitle="Highest-quality GIF encoder, CLI and app." >}}
+{{< card link="textream" title="Textream" icon="annotation" subtitle="Teleprompter that follows your voice." >}}
+{{< card link="clop" title="Clop" icon="scissors" subtitle="Optimise images, video, PDFs and the clipboard automatically." >}}
 {{< /cards >}}
