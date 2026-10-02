@@ -1,10 +1,10 @@
 ---
 title: "Design & Graphics"
 weight: 4
-description: "Vector editing, image optimisation and colour picking."
+description: "Vector editing, image optimisation, colour picking and launch assets."
 ---
 
-{{< lead >}}A vector editor, two image optimisers, and the colour picker macOS should have shipped.{{< /lead >}}
+{{< lead >}}A vector editor, two image optimisers, the colour picker macOS should have shipped, and an editor for launch assets.{{< /lead >}}
 
 Heavy raster work belongs to the media tools, and most build pipelines resize and convert images themselves.
 
@@ -13,4 +13,5 @@ Heavy raster work belongs to the media tools, and most build pipelines resize an
 {{< card link="imageoptim" title="ImageOptim" icon="arrow-circle-down" subtitle="Drag-and-drop lossless image compression." >}}
 {{< card link="imagemagick" title="ImageMagick" icon="photograph" subtitle="Command-line image conversion and manipulation." >}}
 {{< card link="system-color-picker" title="System Color Picker" icon="color-swatch" subtitle="Pick, convert and store colours from anywhere on screen." >}}
+{{< card link="framebeast" title="FrameBeast" icon="photograph" subtitle="Compose App Store screenshots and launch images in one editor." >}}
 {{< /cards >}}
