@@ -1,6 +1,6 @@
 ---
 title: "PCSX2"
-weight: 9
+weight: 14
 description: "PlayStation 2 emulator, native on Apple Silicon."
 ---
 

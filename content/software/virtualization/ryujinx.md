@@ -1,6 +1,6 @@
 ---
 title: "Ryujinx"
-weight: 7
+weight: 8
 description: "Nintendo Switch emulator written in C#."
 ---
 

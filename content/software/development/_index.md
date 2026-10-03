@@ -18,4 +18,5 @@ description: "Editors, AI coding agents, and the clients that sit open beside th
 {{< card link="linesmith" title="LineSmith for Xcode" icon="pencil-alt" subtitle="Xcode source editor extension for line editing." >}}
 {{< card link="tabifyindents" title="TabifyIndents for Xcode" icon="menu-alt-2" subtitle="Convert leading spaces to tabs and back, inside Xcode." >}}
 {{< card link="homebrew-app" title="Homebrew (BrewUI)" icon="cube" subtitle="Homebrew's official GUI." >}}
+{{< card link="tailbeat" title="TailBeat" icon="terminal" subtitle="Native log viewer for Apple platforms, with an MCP server." >}}
 {{< /cards >}}

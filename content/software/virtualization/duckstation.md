@@ -1,6 +1,6 @@
 ---
 title: "DuckStation"
-weight: 11
+weight: 16
 description: "PlayStation 1 emulator with accurate timing and modern rendering."
 ---
 
