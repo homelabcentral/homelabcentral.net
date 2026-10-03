@@ -68,15 +68,23 @@ terminal as this account.
 
 ```shell
 make dev      # :8043 live reload, drafts and future posts included
-make preview  # :8043 production mode — minified, no drafts
-make prod     # write public/ exactly as CI does
-make clean    # remove build output
+make preview  # :8043 exactly what ships — production env, minified, no drafts
+make prod     # verify CI's build succeeds; writes nothing
+make build    # write public/ as CI does (prunes; CLEAN=0 to keep stale files)
+make clean    # remove public/ and resources/
 make help     # everything else
 ```
 
-`public/` is a build artifact — nothing serves it locally. Every target above
-writes it, so whatever ran last is what is in there; run `make prod` before
-trusting it to match what CI produces.
+Three of those four write nothing. `dev` and `preview` serve from memory
+(`--renderToMemory`), and `prod` is an in-memory build that answers "would CI's
+build succeed" and exits non-zero if not. **`build` is the only target that touches
+`public/`**, and it prunes by default, so what is on disk is always what one build
+produced rather than the union of several.
+
+That matters because `hugo server` overlays its in-memory render on the real
+`publishDir`: without `--renderToMemory`, a page left in `public/` by one target is
+served by another that never rendered it, so a stale page outlives the source that
+produced it and `make preview` can show what a production build would exclude.
 
 ## Deployment
 

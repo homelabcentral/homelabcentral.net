@@ -1,9 +1,10 @@
 # homelabcentral.net
 #
 # One server, one port. Hugo serves on 8043 - that is the only port the dev
-# container forwards. Nothing serves `public/`; it is a build artifact, written
-# by whichever of these ran last. `make prod` is the one that writes it the way
-# CI does, so re-run that before trusting what is in there.
+# container forwards. Nothing serves `public/`; it is a build artifact, and
+# `make build` is the ONLY target that writes it. The two servers and `make prod`
+# all render to memory, so public/ always holds exactly what one build produced
+# rather than the union of several.
 #
 
 # Run `make` on its own for the annotated list. A `## comment` after a target
@@ -24,7 +25,7 @@ SHELL := /bin/bash
 PORT ?= 8043
 
 # The site's production base URL, used by `prod` and `preview`. Overridable:
-# `make prod BASE_URL=https://staging.example.com/`. Keep the trailing slash -
+# `make build BASE_URL=https://staging.example.com/`. Keep the trailing slash -
 # Hugo joins paths onto it directly. This must stay in step with `baseURL` in
 # hugo.yaml and with the --baseURL in .github/workflows/pages.yml.
 BASE_URL ?= https://homelabcentral.net/
@@ -37,17 +38,19 @@ GH_OWNER ?= homelabcentral
 # Default base branch for pull requests.
 BASE ?= main
 
-# Opt-in destination pruning: `make build CLEAN=1`.
+# Destination pruning, on by default for `make build`; `CLEAN=0` keeps stale files.
 #
 # --cleanDestinationDir deletes anything in public/ this build did not produce -
-# renamed pages, stale fingerprinted CSS, whatever `make dev` left behind with
-# its localhost baseURL. Off by default because it deletes files it did not
-# create, so it should be a decision rather than a default.
+# renamed pages, stale fingerprinted CSS. On by default because `build` exists to
+# reproduce what CI publishes, and CI builds into an empty checkout: a page left
+# from an earlier build is a difference from CI rather than a convenience.
+#
+# No `CLEAN ?=` default. A default makes "unset" indistinguishable from "explicitly
+# 0", which silently disables the pruning this is meant to control.
 #
 # Different from --gc, which clears the resources/ cache and never touches the
 # destination. `make clean` is stricter still: it removes both outright.
-CLEAN ?= 0
-CLEAN_DEST := $(if $(filter 1 true yes on,$(CLEAN)),--cleanDestinationDir,)
+BUILD_CLEAN_DEST := $(if $(filter 0 false no off,$(CLEAN)),,--cleanDestinationDir)
 
 # Colours, but only when stdout is a TTY, so piped output and CI logs stay clean.
 ifneq (,$(findstring xterm,$(TERM)))
@@ -96,8 +99,14 @@ help: ## Show this help
 ##@ Develop
 
 .PHONY: dev
+# --renderToMemory on both servers. Without it `hugo server` overlays its in-memory
+# render on the real publishDir, so a page left in public/ by a different target is
+# served even though this environment never rendered it - a stale page outliving the
+# source that produced it, and `make preview` showing content a production build
+# would exclude. Serving nothing from disk makes the environment the only thing that
+# decides what exists.
 dev: ## Serve on :8043 with live reload, drafts and future posts
-	hugo server --disableFastRender -D -F --port $(PORT) --bind 0.0.0.0
+	hugo server --disableFastRender --renderToMemory -D -F --port $(PORT) --bind 0.0.0.0
 
 # --appendPort=false is required for the baseURL to stay clean; without it the
 # server advertises the base URL with the port glued on. The cost is LiveReload:
@@ -114,7 +123,7 @@ dev: ## Serve on :8043 with live reload, drafts and future posts
 .PHONY: preview
 preview: ## Serve on :8043 as production: real baseURL, minified, no drafts, no analytics
 	HUGO_SERVICES_GOOGLEANALYTICS_ID="" \
-	  hugo server --environment production --minify \
+	  hugo server --environment production --minify --renderToMemory \
 	  --baseURL "$(BASE_URL)" --appendPort=false \
 	  --port $(PORT) --bind 0.0.0.0
 
@@ -200,7 +209,7 @@ new-blog: ## Create a blog post, prompting for front matter: make new-blog [TITL
 	   echo ''; \
 	 } > "$$path"; \
 	 $(OK) "created $$path"; \
-	 $(WARN) "draft: true - visible under make dev, excluded from make prod"
+	 $(WARN) "draft: true - visible under make dev, excluded from make build"
 
 .PHONY: new-doc
 new-doc: ## Create a docs page, prompting for front matter: make new-doc [TITLE=...]
@@ -252,12 +261,20 @@ new-page: ## Create a bare page from archetypes/default.md: make new-page NAME=s
 ##@ Build
 
 .PHONY: build
-build: ## Write public/ (add CLEAN=1 to prune files this build did not produce)
-	hugo --gc --minify $(CLEAN_DEST)
+# The only target that writes public/, with the same flags and base URL as the
+# publish job, so what lands on disk is what CI would publish.
+build: ## Write public/ as CI does, at $(BASE_URL) (prunes; CLEAN=0 to keep stale files)
+	hugo --gc --minify $(BUILD_CLEAN_DEST) --baseURL "$(BASE_URL)"
 
 .PHONY: prod
-prod: ## Write public/ as CI does, at $(BASE_URL) (add CLEAN=1 to prune)
-	hugo --gc --minify $(CLEAN_DEST) --baseURL "$(BASE_URL)"
+# The publish job's flags, environment and base URL, rendered to memory: it answers
+# "would CI's build succeed" and writes nothing. A build error still exits non-zero,
+# so it is a real check rather than a dry run in name only - and it leaves no output
+# behind for the next `make preview` to serve.
+#
+# Use `make build` when you want the files.
+prod: ## Verify the CI build succeeds, writing nothing (in memory)
+	hugo --gc --minify --renderToMemory --baseURL "$(BASE_URL)"
 
 .PHONY: clean
 clean: ## Remove build output
